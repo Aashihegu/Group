@@ -26,13 +26,13 @@ class GameLevelPirateHunt {
             pixels: { height: 256, width: 256 },
             orientation: { rows: 4, columns: 4 },
             down: { row: 0, start: 0, columns: 4 },
-            downRight: { row: Math.min(2, 4 - 1), start: 0, columns: 3, rotate: Math.PI/16 },
-            downLeft: { row: Math.min(1, 4 - 1), start: 0, columns: 3, rotate: -Math.PI/16 },
+            downRight: { row: Math.min(2, 4 - 1), start: 0, columns: 3, rotate: Math.PI / 16 },
+            downLeft: { row: Math.min(1, 4 - 1), start: 0, columns: 3, rotate: -Math.PI / 16 },
             right: { row: Math.min(2, 4 - 1), start: 0, columns: 4 },
             left: { row: Math.min(1, 4 - 1), start: 0, columns: 4 },
             up: { row: Math.min(3, 4 - 1), start: 0, columns: 4 },
-            upRight: { row: Math.min(2, 4 - 1), start: 0, columns: 3, rotate: -Math.PI/16 },
-            upLeft: { row: Math.min(1, 4 - 1), start: 0, columns: 3, rotate: Math.PI/16 },
+            upRight: { row: Math.min(2, 4 - 1), start: 0, columns: 3, rotate: -Math.PI / 16 },
+            upLeft: { row: Math.min(1, 4 - 1), start: 0, columns: 3, rotate: Math.PI / 16 },
             hitbox: { widthPercentage: 0.45, heightPercentage: 0.2 },
             keypress: { up: 87, left: 65, down: 83, right: 68 }
         };
@@ -48,22 +48,23 @@ class GameLevelPirateHunt {
             orientation: { rows: 1, columns: 3 },
             down: { row: 0, start: 0, columns: 3 },
             hitbox: { widthPercentage: 0.4, heightPercentage: 0.6 },
-            dialogues: ['Fear not! We will get ye out of here... once we find a way through that pesky barrier!'],
-            reaction: function() {
+            dialogues: [
+                'Fear not! We will get ye out of here... once we find a way through that pesky barrier!'
+            ],
+            reaction: function () {
                 if (this.dialogueSystem) {
                     this.showReactionDialogue();
                 } else {
                     console.log(this.greeting);
                 }
             },
-            interact: function() {
+            interact: function () {
                 if (this.dialogueSystem) {
                     this.showRandomDialogue();
                 }
             }
         };
 
-        // RIGHT WALL
         const barrier_right = {
             id: 'barrier_right',
             x: 1230,
@@ -75,11 +76,10 @@ class GameLevelPirateHunt {
             fromOverlay: true
         };
 
-        // FLOOR (prevents falling off deck)
         const barrier_floor = {
             id: 'barrier_floor',
             x: 0,
-            y: 520,
+            y: 570,
             width: 1280,
             height: 10,
             visible: true,
@@ -87,11 +87,10 @@ class GameLevelPirateHunt {
             fromOverlay: true
         };
 
-        // HOLE IN DECK
         const barrier_hole = {
             id: 'barrier_hole',
             x: 520,
-            y: 520,
+            y: 570,
             width: 250,
             height: 50,
             visible: true,
@@ -107,7 +106,6 @@ class GameLevelPirateHunt {
             { class: Barrier, data: barrier_floor },
             { class: Barrier, data: barrier_hole }
         ];
-
     }
 }
 
