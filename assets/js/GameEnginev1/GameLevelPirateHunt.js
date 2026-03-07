@@ -15,7 +15,7 @@ import Player from './essentials/Player.js';
 import Npc from './essentials/Npc.js';
 import Barrier from './essentials/Barrier.js';
 
-class GameLevelPriateHunt {
+class GameLevelPirateHunt
     constructor(gameEnv) {
         const path = gameEnv.path;
         const width = gameEnv.innerWidth;
@@ -83,4 +83,4 @@ this.classes = [      { class: GameEnvBackground, data: bgData },
     }
 }
 
-export default GameLevelPriateHunt;
+export default GameLevelPirateHunt
