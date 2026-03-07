@@ -17,8 +17,8 @@ class GameLevelPirateHunt {
         };
 
         const playerData = {
-            id: 'McArchie',
-            src: path + "/images/gamebuilder/sprites/mcarchie.png",
+            id: 'Kirby',
+            src: path + "/images/gamebuilder/sprites/kirby.png",
             SCALE_FACTOR: 8,
             STEP_FACTOR: 1000,
             ANIMATION_RATE: 30,
@@ -40,9 +40,9 @@ class GameLevelPirateHunt {
         };
 
         const npcData1 = {
-            id: 'Captain Blackbread',
-            greeting: 'Shiver me timbers! How did ye make it onto me ship??',
-            src: path + "/images/gamebuilder/sprites/Pirate.png",
+            id: 'Captain Hook',
+            greeting: 'Shiver me timbers! What a strange ceature! How did ye make it onto me ship??',
+            src: path + "/images/gamebuilder/sprites/Hook.png",
             SCALE_FACTOR: 5,
             ANIMATION_RATE: 1000000008,
             INIT_POSITION: { x: 857, y: 470 },
