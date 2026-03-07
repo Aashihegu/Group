@@ -41,13 +41,13 @@ class GameLevelPirateHunt {
 
         const npcData1 = {
             id: 'Captain Hook',
-            greeting: 'Shiver me timbers! What a strange ceature! How did ye make it onto me ship??',
+            greeting: 'Shiver me timbers! How did ye make it onto me ship??',
             src: path + "/images/gamebuilder/sprites/Hook.png",
-            SCALE_FACTOR: 5,
+            SCALE_FACTOR: 7,
             ANIMATION_RATE: 1000000008,
             INIT_POSITION: { x: 857, y: 470 },
 
-            pixels: { height: 200, width: 335 },
+            pixels: { height: 200, width: 405 },
             orientation: { rows: 1, columns: 3 },
             down: { row: 0, start: 0, columns: 3 },
 
