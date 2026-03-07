@@ -45,7 +45,7 @@ class GameLevelPirateHunt {
             src: path + "/images/gamebuilder/sprites/Hook.png",
             SCALE_FACTOR: 5,
             ANIMATION_RATE: 1000000008,
-            INIT_POSITION: { x: 857, y: 350 },
+            INIT_POSITION: { x: 857, y: 300 },
 
             pixels: { height: 120, width: 335 },
             orientation: { rows: 1, columns: 3 },
