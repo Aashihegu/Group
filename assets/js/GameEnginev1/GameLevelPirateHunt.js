@@ -43,7 +43,7 @@ class GameLevelPirateHunt {
             id: 'Captain Hook',
             greeting: 'Shiver me timbers! How did ye make it onto me ship??',
             src: path + "/images/gamebuilder/sprites/Hook.png",
-            SCALE_FACTOR: 7,
+            SCALE_FACTOR: 3,
             ANIMATION_RATE: 1000000008,
             INIT_POSITION: { x: 857, y: 470 },
 
