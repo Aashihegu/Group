@@ -18,7 +18,7 @@ class GameLevelPirateHunt {
 
         const playerData = {
             id: 'lost sailor',
-            src: path + "/images/gamebuilder/sprites/mcartoon.png",
+            src: path + "/images/gamebuilder/sprites/mcarchie.png",
             SCALE_FACTOR: 8,
             STEP_FACTOR: 1000,
             ANIMATION_RATE: 30,
@@ -45,7 +45,7 @@ class GameLevelPirateHunt {
             src: path + "/images/gamebuilder/sprites/Hook.png",
             SCALE_FACTOR: 5,
             ANIMATION_RATE: 1000000008,
-            INIT_POSITION: { x: 857, y: 400 },
+            INIT_POSITION: { x: 857, y: 350 },
 
             pixels: { height: 120, width: 335 },
             orientation: { rows: 1, columns: 3 },
