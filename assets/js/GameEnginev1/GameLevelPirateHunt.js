@@ -40,7 +40,7 @@ class GameLevelPirateHunt {
         };
 
         const npcData1 = {
-            id: 'Captain Redbeard',
+            id: 'Captain Blackbread',
             greeting: 'Shiver me timbers! How did ye make it onto me ship??',
             src: path + "/images/gamebuilder/sprites/Pirate.png",
             SCALE_FACTOR: 5,
@@ -54,7 +54,7 @@ class GameLevelPirateHunt {
             hitbox: { widthPercentage: 0.4, heightPercentage: 0.6 },
 
             dialogues: [
-                'Fear not! We will get ye out of here... once we find out where yar came from!'
+                'Fear not! We will get ye out of here... once we find where ya came from!'
             ],
 
             reaction: function () {
@@ -89,6 +89,17 @@ class GameLevelPirateHunt {
             y: 620,
             width: 1280,
             height: 10,
+            visible: true,
+            hitbox: { widthPercentage: 0.0, heightPercentage: 0.0 },
+            fromOverlay: true
+        };
+
+        const barrier_hole = {
+            id: 'barrier_hole',
+            x: 520,
+            y: 620,
+            width: 250,
+            height: 50,
             visible: true,
             hitbox: { widthPercentage: 0.0, heightPercentage: 0.0 },
             fromOverlay: true
