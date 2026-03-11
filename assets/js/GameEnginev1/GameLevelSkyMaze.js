@@ -1,19 +1,8 @@
-// Adventure Game Custom Level
-// Exported from GameBuilder on 2026-03-06T22:32:47.000Z
-// How to use this file:
-// 1) Save as assets/js/adventureGame/GameLevelLevelSkyMaze.js in your repo.
-// 2) Reference it in your runner or level selector. Examples:
-//    import GameLevelPlanets from '/assets/js/GameEnginev1/GameLevelPlanets.js';
-//    import GameLevelLevelSkyMaze from '/assets/js/adventureGame/GameLevelLevelSkyMaze.js';
-//    export const gameLevelClasses = [GameLevelPlanets, GameLevelLevelSkyMaze];
-//    // or pass it directly to your GameControl as the only level.
-// 3) Ensure images exist and paths resolve via 'path' provided by the engine.
-// 4) You can add more objects to this.classes inside the constructor.
 
-import GameEnvBackground from '/assets/js/GameEnginev1/essentials/GameEnvBackground.js';
-import Player from '/assets/js/GameEnginev1/essentials/Player.js';
-import Npc from '/assets/js/GameEnginev1/essentials/Npc.js';
-import Barrier from '/assets/js/GameEnginev1/essentials/Barrier.js';
+import GameEnvBackground from './essentials/GameEnvBackground.js';
+import Player from './essentials/Player.js';s
+import Npc from './essentials/Npc.js';
+import Barrier from './essentials/Barrier.js';
 
 class GameLevelLevelSkyMaze {
     constructor(gameEnv) {
