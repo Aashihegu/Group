@@ -40,27 +40,38 @@ class GameLevelLevelSkyMaze {
         };
 
         const npcData1 = {
-            id: 'Finish NPC',
-            greeting: 'End of mini game',
-            src: path + "/images/gamebuilder/sprites/slime.png",
-            SCALE_FACTOR: 8,
-            ANIMATION_RATE: 50,
-            INIT_POSITION: { x: 500, y: 300 },
-            pixels: { height: 225, width: 225 },
-            orientation: { rows: 4, columns: 4 },
+            id: 'Captain Hook',
+            greeting: 'Shiver me timbers! How did ye make it onto me ship??',
+            src: path + "/images/gamebuilder/sprites/Hook.png",
+            SCALE_FACTOR: 4,
+            ANIMATION_RATE: 1000000008,
+            INIT_POSITION: { x: 857, y: 400 },
+
+            pixels: { height: 200, width: 405 },
+            orientation: { rows: 1, columns: 3 },
             down: { row: 0, start: 0, columns: 3 },
-            right: { row: Math.min(1, 4 - 1), start: 0, columns: 3 },
-            left: { row: Math.min(2, 4 - 1), start: 0, columns: 3 },
-            up: { row: Math.min(3, 4 - 1), start: 0, columns: 3 },
-            upRight: { row: Math.min(3, 4 - 1), start: 0, columns: 3 },
-            downRight: { row: Math.min(1, 4 - 1), start: 0, columns: 3 },
-            upLeft: { row: Math.min(2, 4 - 1), start: 0, columns: 3 },
-            downLeft: { row: 0, start: 0, columns: 3 },
-            hitbox: { widthPercentage: 0.1, heightPercentage: 0.2 },
-            dialogues: ['End of mini game'],
-            reaction: function() { if (this.dialogueSystem) { this.showReactionDialogue(); } else { console.log(this.greeting); } },
-            interact: function() { if (this.dialogueSystem) { this.showRandomDialogue(); } }
+
+            hitbox: { widthPercentage: 0.4, heightPercentage: 0.6 },
+
+            dialogues: [
+                'rUN bEFORE I '
+            ],
+
+            reaction: function () {
+                if (this.dialogueSystem) {
+                    this.showReactionDialogue();
+                } else {
+                    console.log(this.greeting);
+                }
+            },
+
+            interact: function () {
+                if (this.dialogueSystem) {
+                    this.showRandomDialogue();
+                }
+            }
         };
+
         const dbarrier_1 = {
             id: 'dbarrier_1', x: 329, y: 100, width: 127, height: 270, visible: false,
             hitbox: { widthPercentage: 0.0, heightPercentage: 0.0 },
@@ -72,7 +83,8 @@ class GameLevelLevelSkyMaze {
             hitbox: { widthPercentage: 0.0, heightPercentage: 0.0 },
             fromOverlay: true
         };
-this.classes = [      { class: GameEnvBackground, data: bgData },
+this.classes = [      
+      { class: GameEnvBackground, data: bgData },
       { class: Player, data: playerData },
       { class: Npc, data: npcData1 },
       { class: Barrier, data: dbarrier_1 },
