@@ -1,4 +1,3 @@
-
 import GameEnvBackground from './essentials/GameEnvBackground.js';
 import Player from './essentials/Player.js';s
 import Npc from './essentials/Npc.js';
@@ -6,6 +5,7 @@ import Barrier from './essentials/Barrier.js';
 
 class GameLevelLevelSkyMaze {
     constructor(gameEnv) {
+
         const path = gameEnv.path;
         const width = gameEnv.innerWidth;
         const height = gameEnv.innerHeight;
@@ -17,25 +17,27 @@ class GameLevelLevelSkyMaze {
         };
 
         const playerData = {
-            id: 'playerData',
+            id: 'lost sailor',
             src: path + "/images/gamebuilder/sprites/mcarchie.png",
-            SCALE_FACTOR: 5,
+            SCALE_FACTOR: 8,
             STEP_FACTOR: 1000,
-            ANIMATION_RATE: 50,
-            INIT_POSITION: { x: 100, y: 300 },
-            pixels: { height: 320, width: 320 },
+            ANIMATION_RATE: 30,
+            INIT_POSITION: { x: 150, y: 470 },
+            pixels: { height: 256, width: 256 },
             orientation: { rows: 4, columns: 4 },
-            down: { row: 0, start: 0, columns: 3 },
-            downRight: { row: 1, start: 0, columns: 3, rotate: Math.PI/16 },
-            downLeft: { row: 0, start: 0, columns: 3, rotate: -Math.PI/16 },
-            left: { row: 2, start: 0, columns: 3 },
-            right: { row: 2, start: 0, columns: 3 },
-            up: { row: 0, start: 0, columns: 3 },
-            upLeft: { row: 2, start: 0, columns: 3, rotate: Math.PI/16 },
-            upRight: { row: 3, start: 0, columns: 3, rotate: -Math.PI/16 },
-            hitbox: { widthPercentage: 0, heightPercentage: 0 },
+
+            down: { row: 0, start: 0, columns: 4 },
+            downRight: { row: Math.min(2, 4 - 1), start: 0, columns: 3, rotate: Math.PI / 16 },
+            downLeft: { row: Math.min(1, 4 - 1), start: 0, columns: 3, rotate: -Math.PI / 16 },
+            right: { row: Math.min(2, 4 - 1), start: 0, columns: 4 },
+            left: { row: Math.min(1, 4 - 1), start: 0, columns: 4 },
+            up: { row: Math.min(3, 4 - 1), start: 0, columns: 4 },
+            upRight: { row: Math.min(2, 4 - 1), start: 0, columns: 3, rotate: -Math.PI / 16 },
+            upLeft: { row: Math.min(1, 4 - 1), start: 0, columns: 3, rotate: Math.PI / 16 },
+
+            hitbox: { widthPercentage: 0.45, heightPercentage: 0.2 },
             keypress: { up: 87, left: 65, down: 83, right: 68 }
-            };
+        };
 
         const npcData1 = {
             id: 'Finish NPC',
