@@ -1,9 +1,9 @@
 import GameEnvBackground from './essentials/GameEnvBackground.js';
-import Player from './essentials/Player.js';s
+import Player from './essentials/Player.js';
 import Npc from './essentials/Npc.js';
 import Barrier from './essentials/Barrier.js';
 
-class GameLevelLevelSkyMaze {
+class GameLevelSkyMaze {
     constructor(gameEnv) {
 
         const path = gameEnv.path;
