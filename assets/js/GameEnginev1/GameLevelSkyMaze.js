@@ -95,4 +95,4 @@ this.classes = [
     }
 }
 
-export default GameLevelLevelSkyMaze;
+export default GameLevelSkyMaze;
