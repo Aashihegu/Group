@@ -1,9 +1,9 @@
 // level1.js - Red Riding Hood Level 1
-import GameEnvBackground from '../essentials/GameEnvBackground.js';
-import Player from '../essentials/Player.js';
-import FloorItem from '../FloorItem.js';
+import GameEnvBackground from './essentials/GameEnvBackground.js';
+import Player from './essentials/Player.js';
+import FloorItem from './FloorItem.js';
 
-class GameLevelRedRidingHood1 {
+class GameLevelPirateMegaGame1 {
   constructor(gameEnv, game) {
     this.gameEnv = gameEnv;
     this.gameControl = game;
@@ -168,4 +168,4 @@ class GameLevelRedRidingHood1 {
   }
 }
 
-export default GameLevelRedRidingHood1;
+export default GameLevelPirateMegaGame1;

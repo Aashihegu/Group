@@ -1,7 +1,7 @@
 // level2.js - Red Riding Hood Level 2: The Chase
-import GameEnvBackground from '../essentials/GameEnvBackground.js';
-import Player from '../essentials/Player.js';
-import Character from '../essentials/Character.js';
+import GameEnvBackground from './essentials/GameEnvBackground.js';
+import Player from './essentials/Player.js';
+import Character from './essentials/Character.js';
 
 class PathBarrier {
     constructor(x, y, w, h, gameEnv) {
@@ -90,7 +90,7 @@ class Wolf extends Character {
   }
 }
 
-class GameLevelRedRidingHood2 {
+class GameLevelPirateMegaGame2 {
   constructor(gameEnv) {
     this.gameEnv = gameEnv;
     let width = gameEnv.innerWidth;
@@ -174,13 +174,13 @@ class GameLevelRedRidingHood2 {
 
     const image_data_chase = {
       name: 'chase',
-      src: path + "/images/gamify/ridinghood/chase.png",
+      src: path + "/images/gamebuilder/bg/PirateMap.jpg",
       pixels: { height: 580, width: 1038 }
     };
 
     const sprite_data_red = {
       id: 'Red Riding Hood',
-      src: path + "/images/gamify/ridinghood/red.png",
+      src: path + "/images/gamebuilder/sprites/mcarchie.png",
       SCALE_FACTOR: 5, STEP_FACTOR: 1000, ANIMATION_RATE: 50,
       INIT_POSITION: { x: 50, y: height * 0.75 },
       pixels: { height: 192, width: 144 },
@@ -194,7 +194,7 @@ class GameLevelRedRidingHood2 {
 
     const sprite_data_wolf = {
       id: 'Wolf',
-      src: path + "/images/gamify/ridinghood/wolfff.png",
+      src: path + "/images/gamebuilder/sprites/Pirate.png",
       SCALE_FACTOR: 3.5,
       STEP_FACTOR: 1000,
       ANIMATION_RATE: 8,
@@ -298,4 +298,4 @@ class GameLevelRedRidingHood2 {
   }
 }
 
-export default GameLevelRedRidingHood2;
+export default GameLevelPirateMegaGame2;
