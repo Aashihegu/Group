@@ -1,13 +1,17 @@
-const path = gameEnv.path;
+import gameEnv from './gameEnv';
 
-// Example game code with updated image paths
-function loadImages() {
-    const images = [
-        `${path}/images/image1.png`,
-        `${path}/images/image2.png`,
-        `${path}/images/image3.png`
-    ];
-    // Load images logic here
+class GameLevelPirateHunt {
+    constructor() {
+        const path = gameEnv.path;
+        this.backgroundImage = `${path}/images/background.png`;
+        this.npcSprites = {
+            gold: `${path}/images/gold.png`,
+            chest: `${path}/images/chest.png`,
+            map: `${path}/images/map.png`,
+            ruby: `${path}/images/ruby.png`
+        };
+    }
+    // Additional class methods and properties go here
 }
 
-// Rest of the game logic...
+export default GameLevelPirateHunt;
