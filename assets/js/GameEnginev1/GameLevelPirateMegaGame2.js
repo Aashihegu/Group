@@ -2,6 +2,7 @@
 import GameEnvBackground from './essentials/GameEnvBackground.js';
 import Player from './essentials/Player.js';
 import Character from './essentials/Character.js';
+import Npc from './essentials/Npc.js';
 
 class PathBarrier {
     constructor(x, y, w, h, gameEnv) {
@@ -14,7 +15,7 @@ class PathBarrier {
 
     draw(debug = false) {
         if (debug) {
-            this.ctx.fillStyle = "rgba(255, 0, 0, 0.5)"; 
+            this.ctx.fillStyle = "rgba(0, 60, 255, 0.5)"; 
             this.ctx.fillRect(this.x, this.y, this.width, this.height);
         }
     }
@@ -33,25 +34,25 @@ class Wolf extends Character {
     const W = this.gameEnv.innerWidth;
     const H = this.gameEnv.innerHeight;
     return [
-      { x: W * 0.09, y: H * 0.80 },
-      { x: W * 0.14, y: H * 0.72 },
-      { x: W * 0.20, y: H * 0.68 },
-      { x: W * 0.26, y: H * 0.67 },
-      { x: W * 0.32, y: H * 0.41 },
-      { x: W * 0.37, y: H * 0.28 },
-      { x: W * 0.44, y: H * 0.23 },
-      { x: W * 0.50, y: H * 0.22 },
-      { x: W * 0.56, y: H * 0.28 },
-      { x: W * 0.58, y: H * 0.40 },
-      { x: W * 0.57, y: H * 0.53 },
-      { x: W * 0.58, y: H * 0.72 },
-      { x: W * 0.63, y: H * 0.81 },
-      { x: W * 0.68, y: H * 0.82 },
-      { x: W * 0.72, y: H * 0.82 },
-      { x: W * 0.76, y: H * 0.44 },
-      { x: W * 0.80, y: H * 0.30 },
-      { x: W * 0.85, y: H * 0.20 },
-      { x: W * 0.90, y: H * 0.13 },
+      { x: W * 0.10, y: H * 0.83 },
+      { x: W * 0.16, y: H * 0.75 },
+      { x: W * 0.21, y: H * 0.67 },
+      { x: W * 0.27, y: H * 0.69 },
+      { x: W * 0.33, y: H * 0.42 },
+      { x: W * 0.36, y: H * 0.29 },
+      { x: W * 0.45, y: H * 0.22 },
+      { x: W * 0.51, y: H * 0.21 },
+      { x: W * 0.57, y: H * 0.29 },
+      { x: W * 0.59, y: H * 0.39 },
+      { x: W * 0.56, y: H * 0.54 },
+      { x: W * 0.59, y: H * 0.73 },
+      { x: W * 0.62, y: H * 0.80 },
+      { x: W * 0.69, y: H * 0.81 },
+      { x: W * 0.73, y: H * 0.83 },
+      { x: W * 0.77, y: H * 0.45 },
+      { x: W * 0.81, y: H * 0.29 },
+      { x: W * 0.84, y: H * 0.19 },
+      { x: W * 0.93, y: H * 0.14 },
     ];
   }
 
@@ -106,13 +107,13 @@ class GameLevelPirateMegaGame2 {
     this.titleElement.style.top = '60px';
     this.titleElement.style.width = '100%';
     this.titleElement.style.textAlign = 'center';
-    this.titleElement.style.color = 'red';
-    this.titleElement.style.fontSize = '40px';
+    this.titleElement.style.color = 'blue';
+    this.titleElement.style.fontSize = '20px';
     this.titleElement.style.fontWeight = '900';
-    this.titleElement.style.fontFamily = '"Courier New", Courier, monospace';
-    this.titleElement.style.textShadow = '2px 2px 4px black, 0 0 10px #ff0000';
+    this.titleElement.style.fontFamily = '"Fira Code", Courier, monospace';
+    this.titleElement.style.textShadow = '2px 2px 4px black, 0 0 10px #0051ff';
     this.titleElement.style.zIndex = '9999';
-    this.titleElement.innerHTML = "LEVEL 2: THE CHASE";
+    this.titleElement.innerHTML = "Quickly! before Blackbread catches you, find the key and outsmart him!";
     document.body.appendChild(this.titleElement);
 
     this.cottageZone = {
@@ -128,26 +129,26 @@ class GameLevelPirateMegaGame2 {
     this.winPopup.style.top = '50%';
     this.winPopup.style.left = '50%';
     this.winPopup.style.transform = 'translate(-50%, -50%)';
-    this.winPopup.style.background = 'linear-gradient(135deg, #2d0a0a, #6b1a1a)';
-    this.winPopup.style.border = '4px solid #ff4444';
+    this.winPopup.style.background = 'linear-gradient(135deg, #0a0a2d, #1a326b)';
+    this.winPopup.style.border = '4px solid #448fff';
     this.winPopup.style.borderRadius = '20px';
     this.winPopup.style.padding = '40px 50px';
     this.winPopup.style.textAlign = 'center';
     this.winPopup.style.zIndex = '99999';
-    this.winPopup.style.boxShadow = '0 0 40px rgba(255,0,0,0.6), 0 0 80px rgba(255,0,0,0.3)';
+    this.winPopup.style.boxShadow = '0 0 40px rgba(0, 98, 255, 0.6), 0 0 80px rgba(0, 89, 255, 0.3)';
     this.winPopup.style.maxWidth = '500px';
     this.winPopup.innerHTML = `
-      <div style="font-size: 60px; margin-bottom: 10px;">🐺😶</div>
-      <div style="color: #ff6666; font-size: 32px; font-weight: 900; font-family: 'Courier New', monospace; text-shadow: 0 0 10px #ff0000; margin-bottom: 15px;">
-        CHAPTER CLOSED.
+      <div style="font-size: 60px; margin-bottom: 10px;">☠️🦜</div>
+      <div style="color: #3f9bf1; font-size: 32px; font-weight: 900; font-family: 'Courier New', monospace; text-shadow: 0 0 10px #ff0000; margin-bottom: 15px;">
+        Bravo!.
       </div>
-      <div style="color: #ffcccc; font-size: 17px; font-family: 'Courier New', monospace; line-height: 1.8; margin-bottom: 25px;">
-        Red Riding Hood ran away.<br>
-        The wolf tried.<br>
-        <span style="color:#ff4444;">Red knew the fairytale better.</span>
+      <div style="color: #91cdf7; font-size: 17px; font-family: 'Courier New', monospace; line-height: 1.8; margin-bottom: 25px;">
+        McArchie Escapes!<br>
+        The Blackbread Fails.<br>
+        <span style="color:#ff4444;">The tale of McArchie goes on!.</span>
       </div>
       <button id="winContinueBtn" style="
-        background: #ff2222;
+        background: #1273fc;
         color: white;
         border: none;
         padding: 12px 30px;
@@ -158,7 +159,7 @@ class GameLevelPirateMegaGame2 {
         cursor: pointer;
         text-transform: uppercase;
         letter-spacing: 2px;
-        box-shadow: 0 0 15px rgba(255,0,0,0.5);
+        box-shadow: 0 0 15px rgba(2, 120, 254, 0.5);
       ">Close ✕</button>
     `;
     document.body.appendChild(this.winPopup);
@@ -181,35 +182,65 @@ class GameLevelPirateMegaGame2 {
     const sprite_data_red = {
       id: 'Red Riding Hood',
       src: path + "/images/gamebuilder/sprites/mcarchie.png",
-      SCALE_FACTOR: 5, STEP_FACTOR: 1000, ANIMATION_RATE: 50,
-      INIT_POSITION: { x: 50, y: height * 0.75 },
-      pixels: { height: 192, width: 144 },
-      orientation: { rows: 4, columns: 3 },
-      down: { row: 0, start: 0, columns: 3 },
-      left: { row: 1, start: 0, columns: 3 },
-      right: { row: 2, start: 0, columns: 3 },
-      up: { row: 3, start: 0, columns: 3 },
+  SCALE_FACTOR: 8,
+      STEP_FACTOR: 1000,
+      ANIMATION_RATE: 30,
+      INIT_POSITION: { x: 150, y: 400 },
+      pixels: { height: 256, width: 256 },
+      orientation: { rows: 4, columns: 4 },
+
+      down: { row: 0, start: 0, columns: 4 },
+      downRight: { row: Math.min(2, 4 - 1), start: 0, columns: 3, rotate: Math.PI/16 },
+      downLeft: { row: Math.min(1, 4 - 1), start: 0, columns: 3, rotate: -Math.PI/16 },
+      right: { row: Math.min(2, 4 - 1), start: 0, columns: 4 },
+      left: { row: Math.min(1, 4 - 1), start: 0, columns: 4 },
+      up: { row: Math.min(3, 4 - 1), start: 0, columns: 4 },
+      upRight: { row: Math.min(2, 4 - 1), start: 0, columns: 3, rotate: -Math.PI/16 },
+      upLeft: { row: Math.min(1, 4 - 1), start: 0, columns: 3, rotate: Math.PI/16 },
+      hitbox: { widthPercentage: 0.45, heightPercentage: 0.2 },
       keypress: { up: 87, left: 65, down: 83, right: 68 }
-    };
+   };
 
     const sprite_data_wolf = {
       id: 'Wolf',
       src: path + "/images/gamebuilder/sprites/Pirate.png",
-      SCALE_FACTOR: 3.5,
+      SCALE_FACTOR: 1.0,
       STEP_FACTOR: 1000,
       ANIMATION_RATE: 8,
       INIT_POSITION: { x: width * 0.09, y: height * 0.82 },
       pixels: { height: 395, width: 632 },
       orientation: { rows: 1, columns: 1 },
       direction: 'right',
-      SPEED: 2,
+      SPEED: 1,
       zIndex: 20
     };
+
+    const npcData1 = {
+            id: 'Captain Blackbread',
+            greeting: 'Hoy matey, my name is Captain Blackbeard. I am the most feared pirate on the seven seas. I have a treasure map that leads to a hidden island, but I need someone to help me find it. Are you up for the adventure?',
+            src: path + "/images/gamebuilder/sprites/key.png",
+            SCALE_FACTOR: 10,
+            ANIMATION_RATE: 1000000008,
+            INIT_POSITION: { x: 1057, y: 100},
+            // The key sprite is embedded in a larger 1024x1024 sheet with black padding.
+            // Crop to the region containing the key so it renders without a black square.
+            pixels: { width: 376, height: 699 },
+            orientation: { rows: 1, columns: 1 },
+            crop: { x: 324, y: 160, width: 376, height: 699 },
+            transparentColor: { r: 0, g: 0, b: 0 },
+            down: { row: 0, start: 0, columns: 1 },
+            hitbox: { widthPercentage: 0.1, heightPercentage: 0.01 },
+            dialogues: ['You found the Key! This key unlocks the gate to the hidden island. You can use it to escape Blackbread and win the game!'],
+            reaction: function() { if (this.dialogueSystem) { this.showReactionDialogue(); } else { console.log(this.greeting); } },
+            interact: function() { if (this.dialogueSystem) { this.showRandomDialogue(); } }
+     
+     };
 
     this.classes = [
       { class: GameEnvBackground, data: image_data_chase },
       { class: Player, data: sprite_data_red },
-      { class: Wolf, data: sprite_data_wolf }
+      { class: Wolf, data: sprite_data_wolf },
+      { class: Npc, data: npcData1 }
     ];
   }
 
