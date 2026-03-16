@@ -96,11 +96,11 @@ class GameLevelPirateHunt {
 
             SCALE_FACTOR: 12,
             ANIMATION_RATE: 100008,
-            INIT_POSITION: { x: 730, y: 340 },
+            INIT_POSITION: { x: 730, y: 350},
 
             pixels: { height: 279, width: 291 },
             orientation: { rows: 1, columns: 1 },
-            down: { row: 0, start: 0, columns: 1, rotate: Math.PI / 8 },
+            down: { row: 0, start: 0, columns: 1, rotate: 0 },
 
             hitbox: { widthPercentage: 0.4, heightPercentage: 0.6 },
 
