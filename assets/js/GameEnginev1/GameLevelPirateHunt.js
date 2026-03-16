@@ -209,6 +209,8 @@ class GameLevelPirateHunt {
 
         /* -------- LEVEL OBJECTS -------- */
 
+        this.checklistEl = checklistEl;
+
         this.classes = [
             { class: GameEnvBackground, data: bgData },
             { class: Player, data: playerData },
@@ -218,6 +220,12 @@ class GameLevelPirateHunt {
             { class: Npc, data: npcData3 },
             { class: Npc, data: npcData4 }
         ];
+    }
+
+    destroy() {
+        if (this.checklistEl) {
+            this.checklistEl.remove();
+        }
     }
 }
 
