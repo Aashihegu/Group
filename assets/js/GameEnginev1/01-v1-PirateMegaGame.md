@@ -1,7 +1,7 @@
 ---
 layout: opencs
-title: RPG Water Exam
-permalink: /gamify/PirateMegaGam
+title: PirateMegaGame, Aashi Hegu, Samaghna Deshatty, Rohit Datla
+permalink: /gamify/PirateMegaGame
 ---
 
 <div id="gameContainer">
@@ -13,11 +13,11 @@ permalink: /gamify/PirateMegaGam
     // Adnventure Game assets locations
     import Core from "{{site.baseurl}}/assets/js/GameEnginev1/essentials/Game.js";
     import GameControl from "{{site.baseurl}}/assets/js/GameEnginev1/essentials/GameControl.js";
-    import GameLevelPirateMegaGame1 from "{{site.baseurl}}/assets/js/GameEnginev1/GameLevelPirateMegaGame1.js";
+    import GameLevelPirateHunt from "{{site.baseurl}}/assets/js/GameEnginev1/GameLevelPirateHunt.js";
     import GameLevelPirateMegaGame2 from "{{site.baseurl}}/assets/js/GameEnginev1/GameLevelPirateMegaGame2.js";
     import { pythonURI, javaURI, fetchOptions } from "{{site.baseurl}}/assets/js/api/config.js";
 
-    const gameLevelClasses = [GameLevelPirateMegaGame1, GameLevelPirateMegaGame2];
+    const gameLevelClasses = [GameLevelPirateHunt, GameLevelPirateMegaGame2];
 
     // Web Server Environment data
     const environment = {

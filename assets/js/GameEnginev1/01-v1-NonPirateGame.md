@@ -1,7 +1,7 @@
 ---
 layout: opencs
 title: RPG Water Example 
-permalink: /gamify/SkyMaze
+permalink: /gamify/PirateBoss
 ---
 
 <div id="gameContainer">
@@ -13,10 +13,10 @@ permalink: /gamify/SkyMaze
     // Adnventure Game assets locations
     import Core from "{{site.baseurl}}/assets/js/GameEnginev1/essentials/Game.js";
     import GameControl from "{{site.baseurl}}/assets/js/GameEnginev1/essentials/GameControl.js";
-    import GameLevelPirateHunt from "{{site.baseurl}}assets/js/GameEnginev1/GameLevelSkyMaze.js";
+    import GameLevelPirateHunt from "{{site.baseurl}}/assets/js/GameEnginev1/GameLevelSkyMaze.js";
     import { pythonURI, javaURI, fetchOptions } from '{{site.baseurl}}/assets/js/api/config.js';
 
-    const gameLevelClasses = [GameLevelSkyMaze];
+    const gameLevelClasses = [GameLevelPirateHuntBoss];
 
     // Web Server Environment data
     const environment = {
