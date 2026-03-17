@@ -408,10 +408,10 @@ class GameLevelPirateBoss {
         ctx.fillRect(0, H * 0.52, W, 8);
 
         // ── BOSS SPRITE — top-right (far side, like Pokemon enemy) ───────
-        const bossW = Math.min(280, W * 0.32);
+        const bossW = Math.min(480, W * 0.52);
         const bossH = bossW * (395 / 632);
-        const bossX = W * 0.62;
-        const bossY = H * 0.04;
+        const bossX = W * 0.48;
+        const bossY = H * 0.01;
 
         // boss platform shadow
         ctx.fillStyle = 'rgba(0,0,0,0.25)';
