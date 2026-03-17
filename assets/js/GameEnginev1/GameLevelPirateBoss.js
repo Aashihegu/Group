@@ -81,7 +81,7 @@ class BlackbreadBoss extends Character {
     }
 }
 
-// ── Level class — mirrors GameLevelPirateMegaGame2 structure exactly ─────────
+// ── Level class ───────────────────────────────────────────────────────────────
 class GameLevelPirateBoss {
     constructor(gameEnv) {
         const width  = gameEnv.innerWidth;
@@ -222,20 +222,24 @@ class GameLevelPirateBoss {
             zIndex: 20
         };
 
+        // ── Sword NPC — using sword.png sprite ────────────────────────────
         const swordData = {
-            id: 'Cutlass',
-            greeting: 'A cutlass...',
-            src: path + '/images/gamebuilder/sprites/key.png',
-            SCALE_FACTOR: 14,
+            id: 'Sword',
+            greeting: 'A sword...',
+            src: path + '/images/gamebuilder/sprites/sword.png',
+
+            SCALE_FACTOR: 5,
             ANIMATION_RATE: 1000000008,
-            INIT_POSITION: { x: 180, y: height * 0.6 },
-            pixels: { width: 376, height: 699 },
+            INIT_POSITION: { x: 180, y: height * 0.58 },
+
+            // sword.png is a single 130×130 icon with a transparent background
+            pixels: { width: 130, height: 130 },
             orientation: { rows: 1, columns: 1 },
-            crop: { x: 324, y: 160, width: 376, height: 699 },
-            transparentColor: { r: 0, g: 0, b: 0 },
             down: { row: 0, start: 0, columns: 1 },
-            hitbox: { widthPercentage: 0.15, heightPercentage: 0.02 },
-            dialogues: ['Cutlass acquired! Press F near the boss to attack!'],
+
+            hitbox: { widthPercentage: 0.6, heightPercentage: 0.6 },
+
+            dialogues: ['Sword acquired! Press F near Blackbread to attack!'],
             interact: function () {
                 if (this.dialogueSystem?.isDialogueOpen()) {
                     this.dialogueSystem.closeDialogue();
@@ -243,7 +247,7 @@ class GameLevelPirateBoss {
                 }
                 if (this.dialogueSystem) {
                     this.dialogueSystem.showDialogue(
-                        'Cutlass acquired! Press F near the boss to attack!',
+                        'Sword acquired! Press F near Blackbread to attack!',
                         this.spriteData.id,
                         this.spriteData.src
                     );
@@ -299,7 +303,7 @@ class GameLevelPirateBoss {
     _flash(msg) {
         const el = document.getElementById('boss-flash');
         if (!el) return;
-        el.textContent  = msg;
+        el.textContent   = msg;
         el.style.opacity = '1';
         clearTimeout(this._flashTimer);
         this._flashTimer = setTimeout(() => { el.style.opacity = '0'; }, 2200);
