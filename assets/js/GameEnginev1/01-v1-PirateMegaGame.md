@@ -15,9 +15,10 @@ permalink: /gamify/PirateMegaGame
     import GameControl from "{{site.baseurl}}/assets/js/GameEnginev1/essentials/GameControl.js";
     import GameLevelPirateHunt from "{{site.baseurl}}/assets/js/GameEnginev1/GameLevelPirateHunt.js";
     import GameLevelPirateMegaGame2 from "{{site.baseurl}}/assets/js/GameEnginev1/GameLevelPirateMegaGame2.js";
+    import GameLevelPirateBoss from "{{site.baseurl}}/assets/js/GameEnginev1/GameLevelPirateBoss.js";
     import { pythonURI, javaURI, fetchOptions } from "{{site.baseurl}}/assets/js/api/config.js";
 
-    const gameLevelClasses = [GameLevelPirateHunt, GameLevelPirateMegaGame2];
+    const gameLevelClasses = [GameLevelPirateHunt, GameLevelPirateMegaGame2, GameLevelPirateBoss];
 
     // Web Server Environment data
     const environment = {
