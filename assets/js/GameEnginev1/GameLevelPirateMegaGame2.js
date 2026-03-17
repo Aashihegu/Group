@@ -1,4 +1,4 @@
-// level2.js - Red Riding Hood Level 2: The Chase
+
 import GameEnvBackground from './essentials/GameEnvBackground.js';
 import Player from './essentials/Player.js';
 import Character from './essentials/Character.js';
@@ -21,7 +21,7 @@ class PathBarrier {
     }
 }
 
-class Wolf extends Character {
+class Pirate extends Character {
   constructor(data, gameEnv) {
     super(data, gameEnv);
     this.velocity = { x: 0, y: 0 };
@@ -113,7 +113,7 @@ class GameLevelPirateMegaGame2 {
     this.titleElement.style.fontFamily = '"Fira Code", Courier, monospace';
     this.titleElement.style.textShadow = '2px 2px 4px black, 0 0 10px #0051ff';
     this.titleElement.style.zIndex = '9999';
-    this.titleElement.innerHTML = "Quickly! before Blackbread catches you, find the key and outsmart him!";
+    this.titleElement.innerHTML = "Quickly! before Blackbread catches you, find the Pot of Gold and outsmart him! But his invisible shields will try to stop you!";
     document.body.appendChild(this.titleElement);
 
     this.cottageZone = {
@@ -164,7 +164,7 @@ class GameLevelPirateMegaGame2 {
     `;
     document.body.appendChild(this.winPopup);
 
-    this.redStartPosition = { x: 50, y: height * 0.75 };
+    this.MAStartPosition = { x: 50, y: height * 0.75 };
 
     this.barriers = [
       new PathBarrier(0, 0, width * 0.28, height * 0.70, gameEnv),
@@ -179,8 +179,8 @@ class GameLevelPirateMegaGame2 {
       pixels: { height: 580, width: 1038 }
     };
 
-    const sprite_data_red = {
-      id: 'Red Riding Hood',
+    const sprite_data_MA = {
+      id: 'McArchie',
       src: path + "/images/gamebuilder/sprites/mcarchie.png",
   SCALE_FACTOR: 8,
       STEP_FACTOR: 1000,
@@ -201,8 +201,8 @@ class GameLevelPirateMegaGame2 {
       keypress: { up: 87, left: 65, down: 83, right: 68 }
    };
 
-    const sprite_data_wolf = {
-      id: 'Wolf',
+    const sprite_data_Pirate = {
+      id: 'Pirate',
       src: path + "/images/gamebuilder/sprites/Pirate.png",
       SCALE_FACTOR: 1.0,
       STEP_FACTOR: 1000,
@@ -218,8 +218,8 @@ class GameLevelPirateMegaGame2 {
     const npcData1 = {
             id: 'Captain Blackbread',
             greeting: 'Hoy matey, my name is Captain Blackbeard. I am the most feared pirate on the seven seas. I have a treasure map that leads to a hidden island, but I need someone to help me find it. Are you up for the adventure?',
-            src: path + "/images/gamebuilder/sprites/key.png",
-            SCALE_FACTOR: 10,
+            src: path + "/images/gamebuilder/sprites/PotOfGold.png",
+            SCALE_FACTOR: 5,
             ANIMATION_RATE: 1000000008,
             INIT_POSITION: { x: 1057, y: 100},
             // The key sprite is embedded in a larger 1024x1024 sheet with black padding.
@@ -238,8 +238,8 @@ class GameLevelPirateMegaGame2 {
 
     this.classes = [
       { class: GameEnvBackground, data: image_data_chase },
-      { class: Player, data: sprite_data_red },
-      { class: Wolf, data: sprite_data_wolf },
+      { class: Player, data: sprite_data_MA },
+      { class: Pirate, data: sprite_data_Pirate },
       { class: Npc, data: npcData1 }
     ];
   }
@@ -274,13 +274,13 @@ class GameLevelPirateMegaGame2 {
     );
   }
 
-  checkPlayerWolfCollision(player, wolf) {
-    if (!player?.position || !wolf?.position) return false;
+  checkPlayerPirateCollision(player, pirate) {
+    if (!player?.position || !pirate?.position) return false;
     return (
-      player.position.x < wolf.position.x + wolf.width &&
-      player.position.x + player.width > wolf.position.x &&
-      player.position.y < wolf.position.y + wolf.height &&
-      player.position.y + player.height > wolf.position.y
+      player.position.x < pirate.position.x + pirate.width &&
+      player.position.x + player.width > pirate.position.x &&
+      player.position.y < pirate.position.y + pirate.height &&
+      player.position.y + player.height > pirate.position.y
     );
   }
 
@@ -288,11 +288,11 @@ class GameLevelPirateMegaGame2 {
     if (!this.gameEnv || !this.gameEnv.gameObjects) return;
 
     let player = null;
-    let wolf = null;
+    let pirate = null;
 
     this.gameEnv.gameObjects.forEach(obj => {
       if (obj instanceof Player) player = obj;
-      if (obj instanceof Wolf) wolf = obj;
+      if (obj instanceof Pirate) pirate = obj;
     });
 
     if (player && !this.wonGame && this.checkInZone(player, this.cottageZone)) {
@@ -300,9 +300,9 @@ class GameLevelPirateMegaGame2 {
       this.showWinPopup();
     }
 
-    if (player && wolf && this.checkPlayerWolfCollision(player, wolf)) {
-      player.position.x = this.redStartPosition.x;
-      player.position.y = this.redStartPosition.y;
+    if (player && pirate && this.checkPlayerPirateCollision(player, pirate)) {
+      player.position.x = this.MAStartPosition.x;
+      player.position.y = this.MAStartPosition.y;
       player.velocity.x = 0;
       player.velocity.y = 0;
     }
