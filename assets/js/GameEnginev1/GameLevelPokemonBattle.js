@@ -1,18 +1,13 @@
 import GameEnvBackground from './essentials/GameEnvBackground.js';
 import Player from './essentials/Player.js';
 
-/* ================================================================
-   Pokémon FireRed/LeafGreen style battle — Charmander vs Pidgey
-   Overlays a full battle UI on top of the game engine canvas.
-   ================================================================ */
-
 class GameLevelPokemonBattle {
     constructor(gameEnv) {
         const path = gameEnv.path;
         this.gameEnv  = gameEnv;
         this.continue = true;
 
-        // ── Pokémon data ──────────────────────────────────────────────
+        // Pokemon stuff like stats etc.
         this.PLAYER_MON = {
             name: 'CHARMANDER', nickname: 'Fred', gender: '♀', level: 9,
             hp: 26, maxHp: 26, exp: 18, maxExp: 40,
@@ -23,7 +18,7 @@ class GameLevelPokemonBattle {
                 { name: 'Metal Claw', pp: 15, maxPp: 15, dmgMin: 10, dmgMax: 18, type: 'STEEL'  },
             ]
         };
-
+// Enemy some pokemon bird
         this.ENEMY_MON = {
             name: 'PIDGEY', gender: '♂', level: 9,
             hp: 23, maxHp: 23,
@@ -34,7 +29,7 @@ class GameLevelPokemonBattle {
             ]
         };
 
-        // ── battle state ──────────────────────────────────────────────
+        // Battle starting for the game loop
         this.state        = 'INTRO';
         this.frameCount   = 0;
         this.menuIndex    = 0;
@@ -55,7 +50,7 @@ class GameLevelPokemonBattle {
         this.shakeEnemy   = 0;
         this.shakePlayer  = 0;
 
-        // ── canvas overlay ────────────────────────────────────────────
+        //Canvas stuff for UI
         this.canvas = document.createElement('canvas');
         this.canvas.id = 'pk-battle-canvas';
         this.canvas.style.cssText = `
@@ -69,7 +64,7 @@ class GameLevelPokemonBattle {
         document.body.appendChild(this.canvas);
         this.ctx = this.canvas.getContext('2d');
 
-        // load Press Start 2P font
+        // loading 2p button stuff
         if (!document.getElementById('pk-font-link')) {
             const link = document.createElement('link');
             link.id   = 'pk-font-link';
@@ -78,7 +73,7 @@ class GameLevelPokemonBattle {
             document.head.appendChild(link);
         }
 
-        // hide the underlying engine canvas while battle is active
+        // hide the canvas
         this._hideEngine = () => {
             const gc = document.getElementById('gameContainer');
             const c  = gc ? gc.querySelector('canvas') : document.querySelector('canvas:not(#pk-battle-canvas)');
@@ -87,7 +82,7 @@ class GameLevelPokemonBattle {
         };
         setTimeout(this._hideEngine, 300);
 
-        // ── input ─────────────────────────────────────────────────────
+        // Key chacker prety simply u should know what this is by now
         this.keys = {};
         this._keyDown = (e) => {
             if (['ArrowUp','ArrowDown','ArrowLeft','ArrowRight','Space'].includes(e.key))
@@ -99,13 +94,13 @@ class GameLevelPokemonBattle {
         window.addEventListener('keydown', this._keyDown);
         window.addEventListener('keyup',   this._keyUp);
 
-        // ── kick off intro messages ───────────────────────────────────
+        // Starting messages
         this._queueMessages(
             ['Wild PIDGEY appeared!', 'Go! Fred!'],
             () => { this.state = 'MENU'; }
         );
 
-        // ── background + player (engine objects, kept offscreen) ──────
+        // More ui things
         const bgData = {
             name: 'battle_bg',
             src: path + '/images/gamebuilder/bg/Ship.jpg',
@@ -135,7 +130,7 @@ class GameLevelPokemonBattle {
         ];
     }
 
-    // ── messaging ─────────────────────────────────────────────────────────
+    // messeging thing to talk to enemy.
     _queueMessages(msgs, cb) {
         this.messageQueue = [...msgs];
         this._msgCallback = cb || null;
@@ -152,7 +147,7 @@ class GameLevelPokemonBattle {
         this.state      = 'MESSAGE';
     }
 
-    // ── input handling ────────────────────────────────────────────────────
+    // Handles key inputs self explainable.
     _handleMenuKey(code) {
         if (this.state === 'MESSAGE') {
             if (code === 'KeyZ' || code === 'Enter' || code === 'Space') this._nextMessage();
@@ -177,7 +172,7 @@ class GameLevelPokemonBattle {
             this._resetBattle();
         }
     }
-
+// Like my other game but better trust.
     _selectMenu() {
         const choice = ['FIGHT', 'BAG', 'POKEMON', 'RUN'][this.menuIndex];
         if (choice === 'FIGHT') {
@@ -200,7 +195,7 @@ class GameLevelPokemonBattle {
             this._queueMessages(["Can't escape from wild Pokemon!"], () => { this.state = 'MENU'; });
         }
     }
-
+//Handles selection of moves and stuff.
     _selectMove() {
         const mv = this.PLAYER_MON.moves[this.fightIndex];
         if (mv.pp <= 0) {
@@ -266,7 +261,7 @@ class GameLevelPokemonBattle {
         this._queueMessages(['Wild PIDGEY appeared!', 'Go! Fred!'], () => { this.state = 'MENU'; });
     }
 
-    // ── drawing helpers ───────────────────────────────────────────────────
+    
     _rr(x, y, w, h, r) {
         this.ctx.beginPath();
         this.ctx.roundRect(x, y, w, h, r);
@@ -422,7 +417,7 @@ class GameLevelPokemonBattle {
         if (this.enemyFlash > 0) this.enemyFlash--;
     }
 
-    // ── main render ───────────────────────────────────────────────────────
+    // Main part of every thing.
     _render() {
         const nav  = document.querySelector('nav,header,.navbar,#topNavbar,#nav-bar');
         const navH = nav ? nav.offsetHeight : 0;
@@ -440,7 +435,7 @@ class GameLevelPokemonBattle {
 
         ctx.clearRect(0, 0, W, H);
 
-        // ── sky + grass background ────────────────────────────────────
+        // ── sky + grass background
         const sky = ctx.createLinearGradient(0, 0, 0, H * 0.6);
         sky.addColorStop(0, '#c0e8f8'); sky.addColorStop(1, '#e8f4f8');
         ctx.fillStyle = sky; ctx.fillRect(0, 0, W, H * 0.6);
@@ -460,7 +455,7 @@ class GameLevelPokemonBattle {
         ctx.fillStyle = 'rgba(80,55,10,0.50)';
         ctx.beginPath(); ctx.ellipse(W*0.24, H*0.76, W*0.15, H*0.050, 0, 0, Math.PI*2); ctx.fill();
 
-        // ── sprites ───────────────────────────────────────────────────
+        // Where sprites and stuff are.
         let esx = 0, esy = 0, psx = 0, psy = 0;
         if (this.shakeEnemy  > 0) { esx=(Math.random()-.5)*8; esy=(Math.random()-.5)*4; this.shakeEnemy--;  }
         if (this.shakePlayer > 0) { psx=(Math.random()-.5)*6; psy=(Math.random()-.5)*3; this.shakePlayer--; }
@@ -477,7 +472,7 @@ class GameLevelPokemonBattle {
         this._label('HP:',                              eIX+8,       eIY+32, 6, '#484838', 'left');
         this._hpBar(eIX+36, eIY+24, eIW-48, 7, Math.max(0, this.enemyHp/this.enemyMaxHp));
 
-        // ── player info box (bottom-right of battle area) ─────────────
+        // ── player info things
         const pIW=180, pIH=68, pIX=W-pIW-8, pIY=H*0.55-pIH-5;
         this._infoBox(pIX, pIY, pIW, pIH);
         this._label(this.PLAYER_MON.nickname,           pIX+8,       pIY+14, 7, '#1a1a10', 'left');
@@ -493,7 +488,7 @@ class GameLevelPokemonBattle {
         ctx.fillRect(pIX+8, pIY+54, Math.max(0, (pIW-16)*(this.playerExp/this.playerMaxExp)), 6);
         this._label('EXP', pIX+8, pIY+66, 5, '#808070', 'left');
 
-        // ── bottom panel (FireRed diagonal blue) ──────────────────────
+        // ── bottom panel stuff
         ctx.fillStyle = '#3858b0';
         ctx.beginPath();
         ctx.moveTo(0, splitY + panH*0.06);
@@ -509,11 +504,11 @@ class GameLevelPokemonBattle {
         ctx.strokeStyle = '#7090e0'; ctx.lineWidth = 1.5;
         ctx.beginPath(); ctx.moveTo(0, splitY+panH*0.06+2.5); ctx.lineTo(W*0.16, splitY+2.5); ctx.lineTo(W, splitY+2.5); ctx.stroke();
 
-        // message box (left side of panel)
+        // message box 
         const msgX=8, msgY=splitY+panH*0.08, msgW=W*0.50, msgH=panH*0.82;
         this._infoBox(msgX, msgY, msgW, msgH);
 
-        // ── MESSAGE state ─────────────────────────────────────────────
+        // MESSAGE state 
         if (this.state === 'MESSAGE') {
             this.msgTimer++;
             const shown = this.currentMsg.slice(0, Math.min(this.currentMsg.length, Math.floor(this.msgTimer / 1.5)));
@@ -524,7 +519,7 @@ class GameLevelPokemonBattle {
                 this._label('▼', msgX+msgW-14, msgY+msgH*0.90, 7, '#1a1a10', 'left');
         }
 
-        // ── MENU state ────────────────────────────────────────────────
+        // MENU state
         if (this.state === 'MENU') {
             this._label('What will',  msgX+10, msgY+msgH*0.36, 7, '#1a1a10', 'left');
             this._label('Fred do?',   msgX+10, msgY+msgH*0.70, 7, '#1a1a10', 'left');
@@ -543,7 +538,7 @@ class GameLevelPokemonBattle {
             this._label(this.itemUsed?'Potion: USED':'Potion: x1', opX+opW-8, opY+opH*0.96, 5, '#808070', 'right');
         }
 
-        // ── FIGHT_MENU state ──────────────────────────────────────────
+        // Fight menu state thing
         if (this.state === 'FIGHT_MENU') {
             const moves    = this.PLAYER_MON.moves;
             const typeCols = { NORMAL:'#888860', FIRE:'#d04010', STEEL:'#9090b0' };
@@ -567,7 +562,7 @@ class GameLevelPokemonBattle {
             this._label('X: BACK',                 tX+tW/2, tY+tH*0.90, 5, '#909080', 'center');
         }
 
-        // ── WIN ───────────────────────────────────────────────────────
+        // Checks weather to win like a good person
         if (this.state === 'WIN') {
             ctx.fillStyle = 'rgba(248,248,232,0.96)'; ctx.fillRect(0, 0, W, H);
             this._label('Wild PIDGEY fainted!', W/2, H*0.34, 9, '#1a1a10', 'center');
@@ -575,7 +570,7 @@ class GameLevelPokemonBattle {
             this._label('Z - play again',        W/2, H*0.74, 6, '#909080', 'center');
         }
 
-        // ── LOSE ──────────────────────────────────────────────────────
+        //Checks weather to lose like a bozoo
         if (this.state === 'LOSE') {
             ctx.fillStyle = 'rgba(8,8,20,0.97)'; ctx.fillRect(0, 0, W, H);
             this._label('Fred fainted!', W/2, H*0.38, 9, '#d02000', 'center');
@@ -583,7 +578,7 @@ class GameLevelPokemonBattle {
         }
     }
 
-    // ── engine hooks (called each frame by the game loop) ─────────────────
+    // ── engine hooks 
     update() {
         this.frameCount++;
         this._render();
@@ -605,3 +600,67 @@ class GameLevelPokemonBattle {
 }
 
 export default GameLevelPokemonBattle;
+
+
+// Why This Kolaveri Di ? (The Soup of Love)
+//Song by
+
+//Dhanush, Anirudh Ravichander
+
+//Yo boys, I am sing song
+//Soup song
+//Flop song
+
+//Why this கொலவெறி, கொலவெறி, கொலவெறிடி?
+//Why this கொலவெறி, கொலவெறி, கொலவெறிடி?
+//Rhythm correct?
+//Why this கொலவெறி, கொலவெறி, கொலவெறிடி?
+//Maintain please
+//Why this கொலவெறி... அடி?
+
+//Distance'uல moon'u, moon'u
+//Moon'u colour'u white'u
+//White'u background night'u, night'u
+//Night'u colour'u black'u
+
+//Why this கொலவெறி, கொலவெறி, கொலவெறிடி?
+//Why this கொலவெறி, கொலவெறி, கொலவெறிடி?
+
+//White'u skin'u girl'u, girl'u
+//Girl'u heart'u black'u
+//Eyes'u-eyes'u meet'u, meet'u
+//My future'u dark'u
+
+//Why this கொலவெறி, கொலவெறி, கொலவெறிடி?
+//Why this கொலவெறி, கொலவெறி, கொலவெறிடி?
+
+//மாமா notes எடுத்துக்கோ
+//அப்டே கைல snacks எடுத்துக்கோ
+//பப்பாப பொய்ங், பப்பாப பொய்ங், பப்பாபப பபபோய்ங்
+//சரியா வாசி
+//Super மாமா ready
+//Ready one, two, three, four
+//Wah, what a changeover மாமா
+//Ok மாமா, now tune change'u
+
+//கைல glass'u... Only english'u
+//Hand'la glass'u glass'la scotch'u
+//Eyes'u full'ah tear'u
+//Empty life'u girl'u come'u
+//Life'u reverse'u gear'u
+
+//Love'u-love'u, oh my love'u
+//You showed me bow'u
+//Cow'u-cow'u holy cow'u
+//I want you here now'u
+
+//God'u I am dying now
+//She is happy how'u?
+//This'u song'u for soup boys'u
+//We don't have choice'u
+
+//Why this கொலவெறி, கொலவெறி, கொலவெறிடி?
+//Why this கொலவெறி, கொலவெறி, கொலவெறிடி?
+//Why this கொலவெறி, கொலவெறி, கொலவெறிடி?
+//Why this கொலவெறி, கொலவெறி, கொலவெறிடி?
+//Flop song
