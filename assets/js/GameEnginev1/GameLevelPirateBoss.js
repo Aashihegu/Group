@@ -3,25 +3,14 @@ import Player from './essentials/Player.js';
 import Character from './essentials/Character.js';
 import Npc from './essentials/Npc.js';
 
-/* ================================================================
-   Undertale-style boss fight for McArchie vs Blackbread
-
-   HOW IT WORKS:
-   - A small "soul box" appears on screen (like Undertale's battle box)
-   - McArchie's blue SOUL moves inside the box dodging bullet patterns
-   - Press F to open the FIGHT menu and slash the boss
-   - Boss has multiple attack patterns per phase (3 phases total)
-   - Between attacks the player chooses: FIGHT / ACT / ITEM / MERCY
-   ================================================================ */
-
 class GameLevelPirateBoss {
     constructor(gameEnv) {
         const path = gameEnv.path;
         this.gameEnv = gameEnv;
         this.continue = true;
 
-        // ── game state ──────────────────────────────────────────────────
-        this.state        = 'INTRO';   // INTRO | MENU | PLAYER_TURN | BOSS_TURN | WIN | LOSE
+        
+        this.state        = 'INTRO';   
         this.bossMaxHp    = 250;
         this.bossHp       = 250;
         this.playerMaxHp  = 100;
@@ -44,10 +33,10 @@ class GameLevelPirateBoss {
         this.msgTimer     = 0;
         this.itemUsed     = false;
 
-        // ── battle box dimensions ───────────────────────────────────────
+     
         this.box = { x: 0, y: 0, w: 240, h: 200 };
 
-        // ── canvas overlay for the battle UI ───────────────────────────
+       
         this.canvas = document.createElement('canvas');
         this.canvas.id = 'ut-battle-canvas';
         this.canvas.style.cssText = `
@@ -61,7 +50,7 @@ class GameLevelPirateBoss {
         document.body.appendChild(this.canvas);
         this.ctx2 = this.canvas.getContext('2d');
 
-        // ── key tracking ────────────────────────────────────────────────
+    
         this.keys = {};
         this._keyDown = (e) => {
             if (['ArrowUp','ArrowDown','ArrowLeft','ArrowRight',
@@ -76,20 +65,20 @@ class GameLevelPirateBoss {
         window.addEventListener('keydown', this._keyDown);
         window.addEventListener('keyup',   this._keyUp);
 
-        // ── load sprites ────────────────────────────────────────────────
+   
         this.bossImg  = new Image();
         this.bossImg.src  = path + '/images/gamebuilder/sprites/Pirate.png';
         this.playerImg = new Image();
         this.playerImg.src = path + '/images/gamebuilder/sprites/mcarchie.png';
 
-        // ── start intro ─────────────────────────────────────────────────
+    
         this._queueMessages([
             '* A ferocious pirate blocks your path!',
             '* BLACKBREAD appeared!',
             '* His eyes glow with fury...',
         ], () => { this.state = 'MENU'; });
 
-        // ── background objects (engine needs these) ──────────────────────
+        
         const bgData = {
             name: 'boss_bg',
             src: path + '/images/gamebuilder/bg/Ship.jpg',
@@ -118,7 +107,7 @@ class GameLevelPirateBoss {
         ];
     }
 
-    // ── message system ───────────────────────────────────────────────────────
+
     _queueMessages(msgs, callback) {
         this.messageQueue = [...msgs];
         this._msgCallback = callback || null;
@@ -210,7 +199,6 @@ class GameLevelPirateBoss {
         }
     }
 
-    // ── boss turn — launches a bullet pattern ────────────────────────────────
     _startBossTurn() {
         this.turnCount++;
         this._checkPhase();
@@ -227,7 +215,7 @@ class GameLevelPirateBoss {
         this.attackTimer  = 0;
         this.state        = 'BOSS_TURN';
 
-        // pick attack pattern
+     
         const patterns = this.bossPhase === 1 ? [0, 1]
                        : this.bossPhase === 2 ? [0, 1, 2]
                                               : [0, 1, 2, 3];
@@ -255,7 +243,7 @@ class GameLevelPirateBoss {
         }
     }
 
-    // ── bullet spawning helpers ──────────────────────────────────────────────
+    
     _spawnBullet(x, y, vx, vy, r = 6, color = '#ff4444', type = 'circle') {
         this.bullets.push({ x, y, vx, vy, r, color, type, life: 300 });
     }
@@ -291,7 +279,7 @@ class GameLevelPirateBoss {
 
     _spawnStormPattern(t) {
         const box = this.box;
-        // rotating ring of bullets from centre
+       
         if (t % 25 === 0) {
             const cx  = box.x + box.w / 2;
             const cy  = box.y + box.h / 2;
@@ -306,7 +294,7 @@ class GameLevelPirateBoss {
     }
 
     _spawnRagePattern(t) {
-        // all patterns combined, faster
+      
         const box = this.box;
         if (t % 15 === 0) {
             const x = box.x + Math.random() * box.w;
@@ -326,12 +314,12 @@ class GameLevelPirateBoss {
         }
     }
 
-    // ── update bullets & soul movement ───────────────────────────────────────
+    
     _updateBossTurn() {
         const t   = this.attackTimer;
         const box = this.box;
 
-        // spawn bullets based on pattern
+       
         if      (this.currentPattern === 0) this._spawnCannonPattern(t);
         else if (this.currentPattern === 1) this._spawnCutlassPattern(t);
         else if (this.currentPattern === 2) this._spawnStormPattern(t);
@@ -344,25 +332,25 @@ class GameLevelPirateBoss {
         if (this.keys['ArrowUp']    || this.keys['KeyW']) this.soulY -= spd;
         if (this.keys['ArrowDown']  || this.keys['KeyS']) this.soulY += spd;
 
-        // clamp soul inside box
+      
         this.soulX = Math.max(box.x + 8,  Math.min(box.x + box.w - 8,  this.soulX));
         this.soulY = Math.max(box.y + 8,  Math.min(box.y + box.h - 8,  this.soulY));
 
-        // move & check bullets
+       
         if (this.invincFrames > 0) this.invincFrames--;
 
         for (let i = this.bullets.length - 1; i >= 0; i--) {
             const b = this.bullets[i];
             b.x += b.vx; b.y += b.vy; b.life--;
 
-            // remove if out of box or expired
+          
             if (b.life <= 0 ||
                 b.x < box.x - 20 || b.x > box.x + box.w + 20 ||
                 b.y < box.y - 20 || b.y > box.y + box.h + 20) {
                 this.bullets.splice(i, 1); continue;
             }
 
-            // hit soul
+           
             if (this.invincFrames === 0) {
                 const dx = b.x - this.soulX, dy = b.y - this.soulY;
                 if (Math.sqrt(dx*dx + dy*dy) < b.r + 5) {
@@ -386,7 +374,7 @@ class GameLevelPirateBoss {
         }
     }
 
-    // ── main draw ─────────────────────────────────────────────────────────────
+    
     _render() {
         const cv  = this.canvas;
         const ctx = this.ctx2;
@@ -400,7 +388,7 @@ class GameLevelPirateBoss {
         ctx.fillStyle = 'rgba(0,0,0,0.78)';
         ctx.fillRect(0, 0, W, H);
 
-        // ── boss sprite ───────────────────────────────────────────────
+       
         const bossW = 180, bossH = 180;
         const bossX = W / 2 - bossW / 2;
         const bossY = 30;
@@ -420,7 +408,7 @@ class GameLevelPirateBoss {
             }
         }
 
-        // ── boss HP bar ───────────────────────────────────────────────
+       
         const barW = 300, barH = 18;
         const barX = W / 2 - barW / 2, barY = bossY + bossH + 6;
         ctx.fillStyle = '#111';
@@ -460,18 +448,18 @@ class GameLevelPirateBoss {
         ctx.textAlign = 'left';
         ctx.fillText(`McArchie   HP  ${Math.round(this.playerHp)} / ${this.playerMaxHp}`, pBarX, pBarY - 6);
 
-        // ── battle box (shown during BOSS_TURN) ───────────────────────
+        
         if (this.state === 'BOSS_TURN') {
             const box = this.box;
-            // outer border
+            
             ctx.strokeStyle = '#ffffff';
             ctx.lineWidth   = 3;
             ctx.strokeRect(box.x - 3, box.y - 3, box.w + 6, box.h + 6);
-            // inner black fill
+           
             ctx.fillStyle = '#000000';
             ctx.fillRect(box.x, box.y, box.w, box.h);
 
-            // bullets
+           
             this.bullets.forEach(b => {
                 ctx.save();
                 if (b.type === 'diamond') {
@@ -488,12 +476,12 @@ class GameLevelPirateBoss {
                 ctx.restore();
             });
 
-            // soul (blue heart)
+           
             const alpha = this.invincFrames > 0 ? (Math.sin(this.frameCount * 0.5) > 0 ? 0.3 : 1) : 1;
             ctx.save();
             ctx.globalAlpha = alpha;
             ctx.fillStyle   = '#0088ff';
-            // draw heart shape
+           
             const sx = this.soulX, sy = this.soulY, sr = 7;
             ctx.beginPath();
             ctx.moveTo(sx, sy + sr);
@@ -502,13 +490,13 @@ class GameLevelPirateBoss {
             ctx.fill();
             ctx.restore();
 
-            // attack label
+        
             ctx.fillStyle   = '#ffffff';
             ctx.font        = '13px monospace';
             ctx.textAlign   = 'center';
             ctx.fillText(this.currentMsg, W / 2, box.y + box.h + 22);
 
-            // timer bar
+           
             const tPct = 1 - this.attackTimer / this.attackDur;
             ctx.fillStyle = '#333';
             ctx.fillRect(box.x, box.y + box.h + 30, box.w, 6);
@@ -516,7 +504,7 @@ class GameLevelPirateBoss {
             ctx.fillRect(box.x, box.y + box.h + 30, box.w * tPct, 6);
         }
 
-        // ── menu (FIGHT / ACT / ITEM / MERCY) ────────────────────────
+        
         if (this.state === 'MENU') {
             const menuY = H - 130;
             // dialogue box
@@ -538,19 +526,19 @@ class GameLevelPirateBoss {
                 ctx.fillText((selected ? '❯ ' : '  ') + label, xPos[i], menuY + 30);
             });
 
-            // item status
+            
             ctx.fillStyle = '#888';
             ctx.font      = '12px monospace';
             ctx.textAlign = 'left';
             ctx.fillText(this.itemUsed ? '  [Grog Flask — USED]' : '  [Grog Flask x1]', 40, menuY + 65);
 
-            // hint
+            
             ctx.fillStyle = '#666';
             ctx.font      = '11px monospace';
             ctx.fillText('Z / Enter to select   ←→ to move', 40, menuY + 85);
         }
 
-        // ── message box ───────────────────────────────────────────────
+        
         if (this.state === 'MESSAGE' || this.state === 'INTRO') {
             const msgY = H - 130;
             ctx.fillStyle   = '#000';
@@ -560,7 +548,7 @@ class GameLevelPirateBoss {
             ctx.roundRect(30, msgY - 10, W - 60, 110, 4);
             ctx.fill(); ctx.stroke();
 
-            // typewriter effect
+
             this.msgTimer++;
             const charsToShow = Math.min(this.currentMsg.length, Math.floor(this.msgTimer / 1.5));
             const displayed   = this.currentMsg.slice(0, charsToShow);
@@ -573,14 +561,14 @@ class GameLevelPirateBoss {
                 ctx.fillText(line, 50, msgY + 22 + i * 24);
             });
 
-            // prompt blink
+           
             if (charsToShow >= this.currentMsg.length && Math.floor(this.frameCount / 20) % 2 === 0) {
                 ctx.fillStyle = '#ffff00';
                 ctx.fillText('▼', W - 60, msgY + 85);
             }
         }
 
-        // ── WIN screen ────────────────────────────────────────────────
+       
         if (this.state === 'WIN') {
             ctx.fillStyle   = '#000';
             ctx.fillRect(0, 0, W, H);
@@ -596,7 +584,7 @@ class GameLevelPirateBoss {
             ctx.fillText('The seas are yours, McArchie.', W/2, H/2 + 45);
         }
 
-        // ── LOSE screen ───────────────────────────────────────────────
+        
         if (this.state === 'LOSE') {
             ctx.fillStyle = '#000';
             ctx.fillRect(0, 0, W, H);
@@ -613,7 +601,7 @@ class GameLevelPirateBoss {
         }
     }
 
-    // ── engine hooks ─────────────────────────────────────────────────────────
+   
     update() {
         this.frameCount++;
         if (this.state === 'BOSS_TURN') this._updateBossTurn();
