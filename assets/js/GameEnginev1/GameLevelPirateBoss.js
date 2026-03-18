@@ -22,8 +22,8 @@ class GameLevelPirateBoss {
 
         // ── game state ──────────────────────────────────────────────────
         this.state        = 'INTRO';   // INTRO | MENU | PLAYER_TURN | BOSS_TURN | WIN | LOSE
-        this.bossMaxHp    = 300;
-        this.bossHp       = 300;
+        this.bossMaxHp    = 250;
+        this.bossHp       = 250;
         this.playerMaxHp  = 100;
         this.playerHp     = 100;
         this.bossPhase    = 1;
@@ -101,7 +101,7 @@ class GameLevelPirateBoss {
             SCALE_FACTOR: 999,   // effectively hidden — battle UI takes over
             STEP_FACTOR: 1000,
             ANIMATION_RATE: 30,
-            INIT_POSITION: { x: -500, y: -500 },
+            INIT_POSITION: { x: 0, y: 0 },
             pixels: { height: 256, width: 256 },
             orientation: { rows: 4, columns: 4 },
             down:  { row: 0, start: 0, columns: 4 },
