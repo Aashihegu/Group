@@ -1,6 +1,6 @@
 ---
 layout: opencs
-title: RPG Water Example 
+title: RPG pokemon
 permalink: /gamify/Pokemon
 ---
 
@@ -16,7 +16,7 @@ permalink: /gamify/Pokemon
     import GameLevelWater from "{{site.baseurl}}assets/js/GameEnginev1/GameLevelPokemonBattle.js";
     import { pythonURI, javaURI, fetchOptions } from '{{site.baseurl}}/assets/js/api/config.js';
 
-    const gameLevelClasses = [GameLevelWater];
+    const gameLevelClasses = [GameLevelPokemon];
 
     // Web Server Environment data
     const environment = {
