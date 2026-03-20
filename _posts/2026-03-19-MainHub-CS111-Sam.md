@@ -1,0 +1,26 @@
+---
+layout: post
+codemirror: true
+title: MainHub
+description: Sam's MainHub - CS111 Review
+permalink: /MainHub
+---
+
+All Lessons will teach you more about the topic as well as fullfilling the knowledge requirments for Mira Costa college CS 111 course
+
+Throughout the first and second trimester, I learned quite a bit. these are some lessons to can refer to. The last box talks about what topics are covered by what lessons, refer to those if you want to learn something specific!:
+
+| Topic | Date | Link | 💭 Reflection/Rubric Requirements |
+| ------- | ------ | ------ | ------ |
+| 📊 Arrays | 01/07/26 | [View GitHub](https://captainsam12.github.io/portfolio-real/js/arrays) | I learned its usefulness when organizing code and how easy it is to both create and break an array!|
+| 🎯 Data Abstraction | 01/09/26 | [View GitHub](https://captainsam12.github.io/portfolio-real/js/dataabstraction) | I learned about inheritance of classes, how to streamline redundant code, and utilize the parent and child classes |
+| 🔀 Nested Conditionals | 01/14/26 | [View GitHub](https://captainsam12.github.io/portfolio-real/js/nested-conditionals) | I learned how to further complicate conditionals, and their main purpose, along with somme well-needed bracket navigation skills |
+| 📋 JSON | 01/16/26 | [View GitHub](https://captainsam12.github.io/portfolio-real/js/json) | I learned how to create objects and how to switch between JSON and JavaScript objects and why both methods are needed |
+| ☑️ Booleans | 01/18/26 | [View GitHub](https://captainsam12.github.io/portfolio-real/js/booleans) | I learned that booleans are the true-false components of JavaScript! They reminded me a lot of conditionals |
+| 🔢 Math Expressions | 01/20/26 | [View GitHub](https://captainsam12.github.io/portfolio-real/js/math) | I learned that I can use VSCode to do my math homework! And solve complex equations/check for certain criteria |
+| 📝 Strings | 01/27/26 | [View GitHub](https://captainsam12.github.io/portfolio-real/js/string) | I learned about string interpolation v.s. string contencation and how to contencate code :) |
+| 🚗 Classes and Methods | 01/27/26 | [View GitHub](https://rishbubs6.github.io/Portfolio/js/classes) | I learned aout the composition of classes and methods, as well as what they're used for. Doing the homework was pretty fun |
+| 📊 Iterations | 01/07/26 | [View GitHub](https://captainsam12.github.io/portfolio-real/js/iterations) | I learned that the basic gist of iterations are to repeat multiple actions for a desirable result |
+
+## Overall Refelection:
+Throughout this JavaScript fundamentals unit, I strengthened my ability to think logically, debug efficiently, and write cleaner, more intentional code. Each assignment built on the last, helping me understand how arrays, conditionals, JSON, and classes all connect to form real programs. By practicing data abstraction, nested logic, and object‑oriented design, I developed a clearer sense of how to structure code and model real‑world systems. Overall, this unit gave me a solid foundation in JavaScript and increased my confidence in reading, writing, and explaining core programming concepts.
