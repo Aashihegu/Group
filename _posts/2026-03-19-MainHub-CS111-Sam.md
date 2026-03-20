@@ -6,9 +6,9 @@ description: Sam's MainHub - CS111 Review
 permalink: /MainHub
 ---
 
-| MainHub | Lessons | Game Overview |
-| ------- | ------ | ------ |
-| [Let's Go!](https://aashihegu1-stack.github.io/Group/MainHub) | [Let's Go!](https://aashihegu1-stack.github.io/Group/Lessons) | [Let's Go!](https://aashihegu1-stack.github.io/Group/PGO) |
+| MainHub | Lessons | Game Overview | Link to Main Repo | Link to GitHub |
+| ------- | ------ | ------ | ------ | ------ |
+| [Let's Go!](https://aashihegu1-stack.github.io/Group/MainHub) | [Let's Go!](https://aashihegu1-stack.github.io/Group/Lessons) | [Let's Go!](https://aashihegu1-stack.github.io/Group/PGO) | [Let's Go!](https://captainsam12.github.io/portfolio-real/) | [Let's Go!](https://github.com/CaptainSam12) |
 
 ---
 
