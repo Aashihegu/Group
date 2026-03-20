@@ -21,8 +21,8 @@ This is my MainHub for CS111 Review. Here, I will be going over The Software Dev
 | 🎯 Software Development Life Cycle | 03/19/26 | [Let's Go!](https://aashihegu1-stack.github.io/Group/SDLC) |
 | 🔀 Retrospective Engineering Practices | 03/19/26 | [Let's Go!](https://aashihegu1-stack.github.io/Group/REP) |
 | 📋 Data Types | 03/19/26 | [Let's Go!](https://aashihegu1-stack.github.io/Group/DT) |
-| ☑️ Operators | 03/19/26 | [Let's Go!](https://captainsam12.github.io/portfolio-real/js/booleans) |
-| 🔢 Control Structures | 03/19/26 | [Let's Go!](https://aashihegu1-stack.github.io/Group/Operators) |
+| ☑️ Operators | 03/19/26 | [Let's Go!](https://aashihegu1-stack.github.io/Group/Operators) |
+| 🔢 Control Structures | 03/19/26 | [Let's Go!](https://aashihegu1-stack.github.io/Group/Control-Structures) |
 | 📝 Input/Output | 03/19/26 | [Let's Go!](https://aashihegu1-stack.github.io/Group/In-Out) |
 | 🚗 Classes | 03/19/26 | [Let's Go!](https://aashihegu1-stack.github.io/Group/Classes) |
 | 📊 Coding Practices | 03/19/26| [Let's Go!](https://aashihegu1-stack.github.io/Group/Coding-Practices) |

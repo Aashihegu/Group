@@ -1,9 +1,9 @@
 ---
 layout: post
 codemirror: true
-title: Control Structures
-description: Control Structures - CS111 Review
-permalink: /Control-Structures
+title: Input/Output
+description: Input/Output - CS111 Review
+permalink: /In-Out
 ---
 
 | MainHub | Lessons | Game Overview |
@@ -12,48 +12,84 @@ permalink: /Control-Structures
 
 ---
 
-<div id="control-app" style="font-family: Arial; max-width: 650px;">
-  <h2>Control Structures (Interactive Viewer)</h2>
+
+<div id="io-app" style="font-family: Arial; max-width: 650px;">
+  <h2>Input / Output (Interactive Viewer)</h2>
   <p>Click a category to explore examples and explanations.</p>
 
-  <div id="control-list"></div>
+  <div id="io-list"></div>
 </div>
 
 <script>
 // ----------------------
-// CONTROL STRUCTURES DATA
+// INPUT / OUTPUT DATA
 // ----------------------
-const controlStructures = [
+const ioCategories = [
   {
-    name: "Iteration (Loops)",
+    name: "Canvas Rendering",
     description: `
-      <p><strong>For Loop:</strong> <code>for (let i = 0; i < 5; i++)</code></p>
-      <p><strong>While Loop:</strong> <code>while (enemy.health > 0)</code></p>
-      <p><strong>For...of:</strong> <code>for (const obj of gameObjects)</code></p>
-      <p><strong>Use Case:</strong> Updating sprites, checking collisions, running AI logic every frame.</p>
-    `
-  },
-  {
-    name: "Conditions (If / Else)",
-    description: `
-      <p><strong>Basic Condition:</strong> <code>if (health <= 0)</code></p>
-      <p><strong>If / Else:</strong> <code>if (isPaused) { ... } else { ... }</code></p>
-      <p><strong>Else If:</strong> <code>else if (state === "hostile")</code></p>
-      <p><strong>Use Case:</strong> Game state changes, AI decisions, input handling.</p>
-    `
-  },
-  {
-    name: "Nested Conditions",
-    description: `
-      <p><strong>Nested If:</strong></p>
+      <p><strong>Drawing Shapes:</strong></p>
       <pre style="background:#f0f0f0; padding:8px;">
-if (enemy.isHostile) {
-    if (distance < 50) {
-        enemy.attack();
-    }
-}
+ctx.fillRect(x, y, width, height);
+ctx.drawImage(sprite, x, y);
       </pre>
-      <p><strong>Use Case:</strong> Complex decision-making like AI behavior, proximity checks, and layered logic.</p>
+      <p><strong>Use Case:</strong> Rendering sprites, backgrounds, UI elements, animations.</p>
+      <p>Canvas output is the visual layer of your game — everything the player sees is drawn here.</p>
+    `
+  },
+  {
+    name: "Keyboard Event Handlers",
+    description: `
+      <p><strong>Key Down:</strong></p>
+      <pre style="background:#f0f0f0; padding:8px;">
+window.addEventListener("keydown", (e) => {
+    if (e.key === "ArrowUp") player.jump();
+});
+      </pre>
+      <p><strong>Key Up:</strong></p>
+      <pre style="background:#f0f0f0; padding:8px;">
+window.addEventListener("keyup", (e) => {
+    player.stopMoving();
+});
+      </pre>
+      <p><strong>Use Case:</strong> Movement, attacks, menu navigation, pausing the game.</p>
+    `
+  },
+  {
+    name: "GameEnv Configuration",
+    description: `
+      <p><strong>Example Config:</strong></p>
+      <pre style="background:#f0f0f0; padding:8px;">
+const gameEnv = new GameEnv({
+    width: 800,
+    height: 600,
+    gravity: 0.4,
+    debug: false
+});
+      </pre>
+      <p><strong>Use Case:</strong> Setting world size, physics, difficulty, assets, and global rules.</p>
+      <p>GameEnv acts as the input that defines how your entire game world behaves.</p>
+    `
+  },
+  {
+    name: "API Calls (Leaderboard / NPC AI)",
+    description: `
+      <p><strong>Leaderboard Fetch:</strong></p>
+      <pre style="background:#f0f0f0; padding:8px;">
+fetch("/api/leaderboard")
+  .then(res => res.json())
+  .then(data => updateLeaderboard(data));
+      </pre>
+
+      <p><strong>NPC AI Request:</strong></p>
+      <pre style="background:#f0f0f0; padding:8px;">
+fetch("/api/npc/behavior?id=pirate01")
+  .then(res => res.json())
+  .then(ai => npc.applyBehavior(ai));
+      </pre>
+
+      <p><strong>Use Case:</strong> Online scores, cloud saves, dynamic NPC behavior, remote configs.</p>
+      <p>API calls allow your game to communicate with servers and external systems.</p>
     `
   }
 ];
@@ -61,9 +97,9 @@ if (enemy.isHostile) {
 // ----------------------
 // RENDER INTERACTIVE VIEWER
 // ----------------------
-const controlContainer = document.getElementById("control-list");
+const ioContainer = document.getElementById("io-list");
 
-controlStructures.forEach((item, index) => {
+ioCategories.forEach((item, index) => {
   const wrapper = document.createElement("div");
   wrapper.style.marginBottom = "10px";
 
@@ -73,8 +109,8 @@ controlStructures.forEach((item, index) => {
   button.style.padding = "10px";
   button.style.textAlign = "left";
   button.style.cursor = "pointer";
-  button.style.border = "1px solid #00ddff";
-  button.style.background = "#4692a7";
+  button.style.border = "1px solid #8c00ff";
+  button.style.background = "#57197d";
   button.style.fontSize = "16px";
 
   const details = document.createElement("div");
@@ -92,100 +128,107 @@ controlStructures.forEach((item, index) => {
 
   wrapper.appendChild(button);
   wrapper.appendChild(details);
-  controlContainer.appendChild(wrapper);
+  ioContainer.appendChild(wrapper);
 });
 </script>
 
 ---
 
-⭐ **Overview: Control Structures in Programming**
+⭐ **Overview: Input / Output in Game Development**
 
-Control structures are the decision‑making and flow‑controlling tools of programming. They determine **how**, **when**, and **how many times** code runs. Without them, a program would simply execute line‑by‑line with no ability to react, repeat, or branch — which would make games, AI, physics, and interactive systems impossible.
+Input/Output (I/O) is the communication layer of your game — the bridge between the player, the game world, and external systems. It determines **how your game receives information** (input) and **how it displays or sends information** (output). Without I/O, your game wouldn’t move, react, draw, or communicate.
 
-In game development especially, control structures shape everything from enemy behavior to movement loops to UI logic. They allow your code to respond dynamically to the player and the game world.
-
-Below are the three core control structures you’re working with: **iteration**, **conditions**, and **nested conditions**.
+In practice, I/O covers everything from rendering graphics to handling keyboard input to loading configuration files to making API calls. Below is a deeper look at the four major I/O systems you’re working with.
 
 ---
 
-## 🔁 **1. Iteration (Loops)**  
-Iteration allows code to repeat actions multiple times. Instead of writing the same line of code over and over, loops let you automate repetition — essential in a game that updates dozens of objects every frame.
+## 🎨 **1. Canvas Rendering (Output)**  
+Canvas rendering is how your game draws everything the player sees. It’s the visual output layer responsible for:
 
-### **Common Loop Types**
-- **For loop:** Runs a set number of times  
-  `for (let i = 0; i < 5; i++)`
-- **While loop:** Runs as long as a condition is true  
-  `while (enemy.health > 0)`
-- **For...of loop:** Iterates through arrays  
-  `for (const obj of gameObjects)`
+- Sprites  
+- Backgrounds  
+- UI elements  
+- Animations  
+- Effects (particles, flashes, shadows)  
 
-### **Where It Matters in Games**
-- Updating all sprites each frame  
-- Checking collisions across many objects  
-- Running AI logic  
-- Animating sequences  
-- Processing inventory or level data  
+### **How It Works**
+The game uses a rendering context (usually `ctx`) to draw shapes, images, and text onto the canvas every frame.
 
-Iteration is the engine that keeps your game world moving.
+Examples include:
 
----
+- `ctx.fillRect(x, y, width, height)`  
+- `ctx.drawImage(sprite, x, y)`  
 
-## 🔍 **2. Conditions (If / Else)**  
-Conditions allow your code to make decisions. They check whether something is true or false and choose what to do next. This is the foundation of game logic — everything from health checks to AI reactions relies on conditions.
-
-### **Common Condition Patterns**
-- **Basic check:**  
-  `if (health <= 0)`
-- **If / else:**  
-  `if (isPaused) { ... } else { ... }`
-- **Else if:**  
-  `else if (state === "hostile")`
-
-### **Where It Matters in Games**
-- Game state transitions (menu, pause, combat)  
-- AI behavior (attack, flee, patrol)  
-- Input handling  
-- Trigger zones and events  
-- Health, damage, and win/lose conditions  
-
-Conditions give your game the ability to *react*.
+### **Why It Matters**
+Canvas rendering is the heartbeat of your game’s visuals. Every frame, it outputs the current state of the world — positions, animations, effects — giving the player a smooth, responsive experience.
 
 ---
 
-## 🧠 **3. Nested Conditions**  
-Nested conditions are conditions *inside* other conditions. They allow for more complex decision‑making — the kind of layered logic that real gameplay requires.
+## ⌨️ **2. Keyboard Event Handlers (Input)**  
+Keyboard events are how the player communicates with your game. They provide real‑time input that drives movement, actions, and UI navigation.
 
-### **Example**
-```js
-if (enemy.isHostile) {
-    if (distance < 50) {
-        enemy.attack();
-    }
-}
-```
+### **How It Works**
+JavaScript listens for events like:
 
-### **Where It Matters in Games**
-- AI decision trees  
-- Proximity checks  
-- Multi‑step logic (e.g., “if the player is close AND the enemy is hostile…”)  
-- Handling multiple states at once  
-- Complex interactions between objects  
+- `keydown` — when a key is pressed  
+- `keyup` — when a key is released  
 
-Nested conditions let your game make smarter, more nuanced decisions.
+These events trigger functions that update the player’s state:
+
+- Jumping  
+- Moving left/right  
+- Attacking  
+- Pausing  
+- Opening menus  
+
+### **Why It Matters**
+Without keyboard input, your game wouldn’t be interactive. Event handlers translate physical key presses into in‑game actions, making the player feel connected to the world.
+
+---
+
+## ⚙️ **3. GameEnv Configuration (Input)**  
+GameEnv configuration is the structured input that defines how your game world behaves. It’s not player input — it’s *system input* that sets the rules of the environment.
+
+### **What It Controls**
+- Canvas size  
+- Gravity  
+- Debug mode  
+- Physics settings  
+- Difficulty  
+- Asset paths  
+- NPC defaults  
+
+### **Why It Matters**
+GameEnv acts as the blueprint for your game world. It ensures consistency, makes tuning easier, and allows you to adjust global behavior without rewriting code. It’s the foundation that everything else builds on.
 
 ---
 
-🎯 **Why Control Structures Matter**
+## 🌐 **4. API Calls (Input + Output)**  
+API calls allow your game to communicate with external systems — sending data out and receiving data back. This is where your game becomes connected, dynamic, and scalable.
 
-Control structures are the backbone of dynamic, interactive programming. They allow your game to:
+### **Common Uses**
+- **Leaderboards:** Fetching top scores  
+- **NPC AI:** Requesting behavior profiles  
+- **Cloud saves:** Storing player progress  
+- **Remote configuration:** Updating difficulty or events  
+- **Multiplayer:** Syncing player states  
 
-- Repeat actions efficiently  
-- Respond to player input  
-- Make decisions based on game state  
-- Handle complex AI behavior  
-- Update dozens of objects every frame  
-- Create branching logic and varied outcomes  
-
-Without control structures, your game would be static and predictable. With them, you can build systems that feel alive, responsive, and intelligent.
+### **Why It Matters**
+API calls extend your game beyond the local machine. They enable online features, dynamic content, and smarter AI. They turn your game into a living system that can evolve over time.
 
 ---
+
+🎯 **Why Input/Output Matters**
+
+Input/Output is what makes your game *interactive*, *visual*, and *connected*. It allows your game to:
+
+- Receive player actions  
+- Render the world every frame  
+- Load configuration and assets  
+- Communicate with servers  
+- Update dynamically based on external data  
+
+Without I/O, your game would be a static script. With it, you get movement, visuals, AI, UI, and online features — everything that makes a game feel alive.
+
+---
+
