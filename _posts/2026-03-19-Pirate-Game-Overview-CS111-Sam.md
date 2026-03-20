@@ -16,62 +16,60 @@ This is my main overview for the PirateMegaGame. It has examples of what I used 
 
 You can reference the code here:
 
+| Level 1 | Level 2 | Level 3 | Issues/Documentation |
+| ------- | ------ | ------ | ------ |
+| [View!](https://github.com/aashihegu1-stack/Group/blob/main/assets/js/GameEnginev1/GameLevelPirateHunt.js) | [View!](https://github.com/aashihegu1-stack/Group/blob/main/assets/js/GameEnginev1/GameLevelPirateMegaGame2.js) | [View!](https://github.com/aashihegu1-stack/Group/blob/main/assets/js/GameEnginev1/GameLevelPirateBoss.js) | [View!](https://github.com/aashihegu1-stack/Group/issues/4) | 
 
-Level 1: [View](https://github.com/aashihegu1-stack/Group/blob/main/assets/js/GameEnginev1/GameLevelPirateHunt.js)
-
-Level 2: [View!](https://github.com/aashihegu1-stack/Group/blob/main/assets/js/GameEnginev1/GameLevelPirateMegaGame2.js)
-
-Level 3: [View!](https://github.com/aashihegu1-stack/Group/blob/main/assets/js/GameEnginev1/GameLevelPirateBoss.js)
 
 And you can play the game here:
 
-<div style="display: flex; flex-wrap: wrap; gap: 10px;">
+<div style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;">
     <a href="https://aashihegu1-stack.github.io/Group/gamify/PirateMegaGame" style="text-decoration: none;">
         <div style="background-color: #ff002f; color: black; padding: 10px 20px; border-radius: 5px; font-weight: bold;">
-            Play!
+            Play
         </div>
     </a>
+</div>
 
-
-<div style="font-family: Arial; max-width: 700px;">
-  <h2 style="margin-bottom: 10px;">🌲 Game Object Class Overview</h2>
+<div style="font-family: Arial; max-width: 700px; margin: 0 auto;">
+  <h2 style="margin-bottom: 10px;">☠️🦜 Game Object Class Overview</h2>
   <p style="margin-top: 0;">A clean breakdown of how each object fits into the engine's class hierarchy.</p>
 
   <table style="width: 100%; border-collapse: collapse; margin-top: 15px; font-size: 16px;">
     <thead>
       <tr style="background: #f3f3f3;">
-        <th style="padding: 10px; border: 1px solid #ccc;">Game Object</th>
-        <th style="padding: 10px; border: 1px solid #ccc;">Class</th>
-        <th style="padding: 10px; border: 1px solid #ccc;">Role</th>
+        <th style="padding: 10px; border: 1px solid #ff0051;">Game Object</th>
+        <th style="padding: 10px; border: 1px solid #ff0051;">Class</th>
+        <th style="padding: 10px; border: 1px solid #ff0051;">Role</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td style="padding: 10px; border: 1px solid #ccc;"><strong>McArchie</strong></td>
-        <td style="padding: 10px; border: 1px solid #ccc;"><code>Player extends Character</code></td>
-        <td style="padding: 10px; border: 1px solid #ccc;">Player-controlled character</td>
+        <td style="padding: 10px; border: 1px solid #ff0051;"><strong>McArchie</strong></td>
+        <td style="padding: 10px; border: 1px solid #ff0051;"><code>Player extends Character</code></td>
+        <td style="padding: 10px; border: 1px solid #ff0051;">Player-controlled character</td>
       </tr>
       <tr>
-        <td style="padding: 10px; border: 1px solid #ccc;"><strong>Pirate</strong></td>
-        <td style="padding: 10px; border: 1px solid #ccc;"><code>Pirate extends Character</code></td>
-        <td style="padding: 10px; border: 1px solid #ccc;">Hostile NPC with reaction logic</td>
+        <td style="padding: 10px; border: 1px solid #ff0051;"><strong>Pirate</strong></td>
+        <td style="padding: 10px; border: 1px solid #ff0051;"><code>Pirate extends Character</code></td>
+        <td style="padding: 10px; border: 1px solid #ff0051;">"Enemy" NPC with reaction logic</td>
       </tr>
       <tr>
-        <td style="padding: 10px; border: 1px solid #ccc;"><strong>Map</strong></td>
-        <td style="padding: 10px; border: 1px solid #ccc;"><code>Background extends GameObject</code></td>
-        <td style="padding: 10px; border: 1px solid #ccc;">Layered scrolling environment</td>
+        <td style="padding: 10px; border: 1px solid #ff0051;"><strong>Map</strong></td>
+        <td style="padding: 10px; border: 1px solid #ff0051;"><code>Background extends GameObject</code></td>
+        <td style="padding: 10px; border: 1px solid #ff0051;">Layered scrolling environment</td>
       </tr>
       <tr>
-        <td style="padding: 10px; border: 1px solid #ccc;"><strong>Shields</strong></td>
-        <td style="padding: 10px; border: 1px solid #ccc;"><code>Barrier extends GameObject</code></td>
-        <td style="padding: 10px; border: 1px solid #ccc;">Collision boundaries</td>
+        <td style="padding: 10px; border: 1px solid #ff0051;"><strong>Shields</strong></td>
+        <td style="padding: 10px; border: 1px solid #ff0051;"><code>Barrier extends GameObject</code></td>
+        <td style="padding: 10px; border: 1px solid #ff0051;">Collision boundaries</td>
       </tr>
     </tbody>
   </table>
 </div>
 
 
-<div id="cs111-app" style="font-family: Arial; max-width: 900px; color: #e6e6e6;">
+<div id="cs111-app" style="font-family: Arial; max-width: 900px; color: #e6e6e6; margin: 0 auto;">
 
   <h2 style="margin-bottom: 10px; color: #fff;">🎓 CS111 Requirements — Interactive Map</h2>
   <p style="margin-top: 0; color: #bbb;">Click any section to expand and learn more.</p>
@@ -115,7 +113,7 @@ And you can play the game here:
       margin: 3px 0;
       border: 1px solid #444;
       font-size: 14px;
-      color: #ff6eca;
+      color: #f38fce;
     }
   </style>
 

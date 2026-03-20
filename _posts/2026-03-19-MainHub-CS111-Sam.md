@@ -13,7 +13,7 @@ permalink: /MainHub
 ---
 
 
-This is my MainHub for CS111 Review. Here, I will be going over The Software Developement Life Cycle (SDLC), Object Oriented Programming, Software Engineering Practices, Retrospective Engineering Practices, and Coding Practices:
+This is my MainHub for CS111 Review. Here, I will be going over The Software Developement Life Cycle (SDLC), Object Oriented Programming, Software Engineering Practices, Retrospective Engineering Practices, and Coding Practices. You can also find links to some types of code in depth in an interactive way as well as a in detail way:
 
 | Page | Date | Link |
 | ------- | ------ | ------ |
@@ -26,3 +26,5 @@ This is my MainHub for CS111 Review. Here, I will be going over The Software Dev
 | 📝 Input/Output | 03/19/26 | [Let's Go!](https://aashihegu1-stack.github.io/Group/In-Out) |
 | 🚗 Classes | 03/19/26 | [Let's Go!](https://aashihegu1-stack.github.io/Group/Classes) |
 | 📊 Coding Practices | 03/19/26| [Let's Go!](https://aashihegu1-stack.github.io/Group/Coding-Practices) |
+
+
