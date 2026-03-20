@@ -3,7 +3,7 @@ layout: post
 codemirror: true
 title: Software Developement Life Cycle 
 description: The Software Developement Life Cycle - CS111 Review
-permalink: /SDL
+permalink: /SDLC
 ---
 
 
