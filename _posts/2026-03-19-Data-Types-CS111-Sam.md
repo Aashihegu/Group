@@ -6,6 +6,12 @@ description: Data Types - CS111 Review
 permalink: /DT
 ---
 
+| MainHub | Lessons | Game Overview |
+| ------- | ------ | ------ |
+| [Let's Go!](https://aashihegu1-stack.github.io/Group/MainHub) | [Let's Go!](https://aashihegu1-stack.github.io/Group/Lessons) | [Let's Go!](https://aashihegu1-stack.github.io/Group/PGO) |
+
+---
+
 
 <div id="datatype-app" style="font-family: Arial; max-width: 650px;">
   <h2>Data Types (Interactive Viewer)</h2>

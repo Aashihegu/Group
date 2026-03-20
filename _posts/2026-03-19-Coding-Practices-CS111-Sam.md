@@ -6,6 +6,13 @@ description: Coding-Practices - CS111 Review
 permalink: /Coding-Practices
 ---
 
+| MainHub | Lessons | Game Overview |
+| ------- | ------ | ------ |
+| [Let's Go!](https://aashihegu1-stack.github.io/Group/MainHub) | [Let's Go!](https://aashihegu1-stack.github.io/Group/Lessons) | [Let's Go!](https://aashihegu1-stack.github.io/Group/PGO) |
+
+---
+
+
 <div id="coding-app" style="font-family: Arial; max-width: 650px;">
   <h2>Coding Practices (Interactive Viewer)</h2>
   <p>Click a topic to explore examples and explanations.</p>

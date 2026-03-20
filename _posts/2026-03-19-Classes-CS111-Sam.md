@@ -5,6 +5,11 @@ title: Classes
 description: Classes - CS111 Review
 permalink: /Classes
 ---
+| MainHub | Lessons | Game Overview |
+| ------- | ------ | ------ |
+| [Let's Go!](https://aashihegu1-stack.github.io/Group/MainHub) | [Let's Go!](https://aashihegu1-stack.github.io/Group/Lessons) | [Let's Go!](https://aashihegu1-stack.github.io/Group/PGO) |
+
+---
 
 <div id="classes-app" style="font-family: Arial; max-width: 650px;">
   <h2>Classes (Interactive Viewer)</h2>

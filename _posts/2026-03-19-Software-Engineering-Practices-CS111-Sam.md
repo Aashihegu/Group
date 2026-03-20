@@ -6,6 +6,12 @@ description: Software Engineering Practices - CS111 Review
 permalink: /SEP
 ---
 
+| MainHub | Lessons | Game Overview |
+| ------- | ------ | ------ |
+| [Let's Go!](https://aashihegu1-stack.github.io/Group/MainHub) | [Let's Go!](https://aashihegu1-stack.github.io/Group/Lessons) | [Let's Go!](https://aashihegu1-stack.github.io/Group/PGO) |
+
+---
+
 
 <div id="se-app" style="font-family: Arial; max-width: 650px;">
   <h2>Software Engineering Practices (Interactive Viewer)</h2>

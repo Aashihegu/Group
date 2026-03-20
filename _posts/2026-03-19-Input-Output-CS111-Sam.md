@@ -6,6 +6,12 @@ description: Control Structures - CS111 Review
 permalink: /Control-Structures
 ---
 
+| MainHub | Lessons | Game Overview |
+| ------- | ------ | ------ |
+| [Let's Go!](https://aashihegu1-stack.github.io/Group/MainHub) | [Let's Go!](https://aashihegu1-stack.github.io/Group/Lessons) | [Let's Go!](https://aashihegu1-stack.github.io/Group/PGO) |
+
+---
+
 <div id="control-app" style="font-family: Arial; max-width: 650px;">
   <h2>Control Structures (Interactive Viewer)</h2>
   <p>Click a category to explore examples and explanations.</p>
